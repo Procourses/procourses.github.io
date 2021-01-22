@@ -7,7 +7,9 @@
     <link rel="shortcut icon" type="image/jpg" href="../images/logo.png"/>
     <link rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/dropdown.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <script>
@@ -39,8 +41,29 @@ for (var i = 0; i < btns.length; i++) {
   
         <div class="header-right">
           <a href="index.html" class="btnn active" id=#logo>Home</a>
-          <a href="info.html" class="btnn">Course Info</a>
-          <a href="study.html" class="btnn">Study Abroad</a>
+         
+          <div class="dropdown">
+            <button class="dropbtn">Course Info
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="info.html">Data Science</a>
+              <a href="#">Finance</a>
+              <a href="#">AI</a>
+            </div>
+          </div>
+         <!-- <a href="info.html" class="btnn">Course Info</a> -->
+         <!-- <a href="study.html" class="btnn">Study Abroad</a> -->
+         <div class="dropdown">
+            <button class="dropbtn">Study Abroad 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="study.html">Study in the USA</a>
+              <a href="#">Study in France</a>
+              <a href="#">Study in Germany</a>
+            </div>
+          </div> 
           <a href="blog.html" class="btnn">Blog</a>
           <a href="about.html" class="btnn">About</a>
         </div>
@@ -55,8 +78,9 @@ for (var i = 0; i < btns.length; i++) {
         <div class="btn-wrapper">
         <!--  <a href="#" class="btn signup">Sign up with Email</a>
           <p>or</p> -->
-          <a href="info.html" class="btn facebook"><span class="fa fa-facebook"></span>Online Courses</a>
-          <a href="study.html" class="btn twitter"><span class="fa fa-twitter"></span>Study Abroad</a>
+          <a href="info.html" class="btn facebook">Online Courses</a>
+          <a href="study.html" class="btn twitter">Study Abroad</a> 
+         <!-- <a href="study.html" class="btn twitter"><span class="fa fa-twitter"></span>Study Abroad</a> -->
         </div>
       </div>
     </div>
