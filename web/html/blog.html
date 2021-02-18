@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/blog.css">
+<link rel="stylesheet" type="text/css" href="../css/info.css">
 <link rel="stylesheet" href="../css/stylesheet.css">
 <link rel="stylesheet" href="../css/responsive.css">
 <link rel="stylesheet" type="text/css" href="../css/dropdown.css">
@@ -40,34 +41,56 @@ this.className += " active";
     <div class="header-right">
       <a href="index.html" class="btnn" id=#logo>Home</a>
       <div class="dropdown">
-        <button class="dropbtn">Course Info
+        <button class="dropbtn">Udacity
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
           <a href="info.html">Data Science</a>
-          <a href="#">Finance</a>
-          <a href="#">AI</a>
+          <a href="#">Machine Learning</a>
+          <a href="#">Web Development</a>
         </div>
       </div>
      <!-- <a href="info.html" class="btnn">Course Info</a> -->
      <!-- <a href="study.html" class="btnn">Study Abroad</a> -->
      <div class="dropdown">
-        <button class="dropbtn">Study Abroad 
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="study.html">Study in the USA</a>
-          <a href="#">Study in France</a>
-          <a href="#">Study in Germany</a>
-        </div>
-      </div> 
+      <button class="dropbtn">Coursera 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div> 
+   
+    <!--Dropdown of edx-->        
+    <div class="dropdown">
+      <button class="dropbtn">Edx 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div> 
+
+    <!--Dropdown of udemy-->
+    <div class="dropdown">
+      <button class="dropbtn">Udemy 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div> 
+     
       <a href="blog.html" class="btnn active">Blog</a>
       <a href="about.html" class="btnn">About</a>
     </div>
-  </div>
-
-
-
+  
 </header> 
 
 
@@ -76,6 +99,12 @@ this.className += " active";
 <div class="headername">
   <h2> Informative Blog</h2>
 </div>
+
+
+
+
+
+
 
 <div class="row">
   <div class="leftcolumn">
@@ -98,8 +127,74 @@ this.className += " active";
       </div>
       <p>This blog post will help us to understand how to predict the credit card behavior based on demographic and household characteristics in the United States. <a href="https://webdevelopmentyschools.wordpress.com/blog/" target="_blank">Read more..</a></p>
     </div>
+
+    <div class="card">
+    
+      <h1>Top Six Online Data Science Courses</h1>
+      <table class="container">
+          <thead>
+              <tr>
+                  <th><h1>Certificate</h1></th>
+                  <th><h1>Platform</h1></th>
+                  <th><h1>Duration</h1></th>
+                  <th><h1>Price $</h1></th>
+              <!--    <th><h1>Rank</h1></th> -->
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>IBM Data Science Professional Certificate</td>
+                  <td><a href="https://www.coursera.org/professional-certificates/ibm-data-science?utm_source=gg&utm_medium=sem&campaignid=1876641588&utm_campaign=10-IBM-Data-Science-US&utm_content=10-IBM-Data-Science-US&adgroupid=70740725700&device=c&keyword=ibm%20data%20science%20coursera&matchtype=b&network=g&devicemodel=&adpostion=&creativeid=491633792380&hide_mobile_promo&gclid=CjwKCAiAo5qABhBdEiwAOtGmbjE0MrOmqGxUo1_X9U0CmjpVCQgBsyGsqjqYBpxgKgNC3DP6MrW_gxoC6AgQAvD_BwE" >IBM-Coursera</a></td>
+                  <td>10 months</td>
+                  <td> 300 </td>
+            <!--        <td>1</td> -->
+              </tr>
+              <tr>
+                  <td>Data Scientist Nanodegree</td>
+                  <td><a href="https://www.udacity.com/course/data-scientist-nanodegree--nd025">Udacity</a></td>
+                  <td>3 months</td>
+                  <td> 1200 </td>
+            <!--        <td>2</td> -->
+              </tr>
+              <tr>
+                  <td>Data Scientist Career Path</td>
+                  <td><a href="https://learn.datacamp.com/career-tracks/data-scientist-with-python?version=5">Datacamp</a></td>
+                  <td>88 hours</td>
+                  <td> 300/year </td>
+           <!--         <td>3</td> -->
+              </tr>
+          <tr>
+                  <td>MicroMasters Statistics & Data Science</td>
+                  <td><a href="https://www.edx.org/micromasters/mitx-statistics-and-data-science">MITx-Edx</a></td>
+                  <td>14 months</td>
+                  <td> 1300 </td>
+            <!--        <td>4</td>  -->
+              </tr>
+          <tr>
+                  <td>Professional Certificate in Data Science </td>
+                  <td><a href="https://www.edx.org/professional-certificate/harvardx-data-science">Harvardx-Edx</a></td>
+                  <td>17 months</td>
+                  <td> 800 </td>
+            <!--        <td>5</td>  -->
+              </tr>
+          <tr>
+                  <td>Data Scientist Career Path</td>
+                  <td><a href="https://www.codecademy.com/learn/paths/data-science" >Codeacademy</a></td>
+                  <td>35 weeks</td>
+                  <td> 300/year </td>
+            <!--        <td>6</td>   -->
+              </tr>
+          </tbody>
+      </table>    </div>
+
+
+
+
   </div>
   
+  
+
+
   
   <div class="rightcolumn">
     <div class="card">

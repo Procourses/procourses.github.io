@@ -5,7 +5,9 @@
 <link rel="stylesheet" type="text/css" href="../css/info.css">
 <link rel="stylesheet" href="../css/stylesheet.css">
 <link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" type="text/css" href="../css/dropdown.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <script>
@@ -32,18 +34,64 @@ this.className += " active";
       <a href="#logo">
       <img class="logo" src="../images/logo2.png"></a>
     </div>
-    
+
     <span class="fa fa-bars menu-icon"></span>
 
     <div class="header-right">
       <a href="index.html" class="btnn" id=#logo>Home</a>
-      <a href="info.html" class="btnn active">Course Info</a>
-      <a href="study.html" class="btnn">Study Abroad</a>
-      <a href="blog.html" class="btnn">Blog</a>
-      <a href="about.html" class="btnn">About</a>
+      <div class="dropdown">
+        <button class="dropbtn">Udacity
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="info.html">Data Science</a>
+          <a href="#">Machine Learning</a>
+          <a href="#">Web Development</a>
+        </div>
+      </div>
+     <!-- <a href="info.html" class="btnn">Course Info</a> -->
+     <!-- <a href="study.html" class="btnn">Study Abroad</a> -->
+     <div class="dropdown">
+      <button class="dropbtn">Coursera 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div> 
+   
+    <!--Dropdown of edx-->        
+    <div class="dropdown">
+      <button class="dropbtn">Edx 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div> 
 
+    <!--Dropdown of udemy-->
+    <div class="dropdown">
+      <button class="dropbtn">Udemy 
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="study.html">Data Science</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">Web Development</a>
+      </div>
+    </div>
+      <a href="blog.html" class="btnn">Blog</a>
+      <a href="about.html" class="btnn active">About</a>
     </div>
   </div>
+
+
+
 </header> 
 
 <div class="main">
