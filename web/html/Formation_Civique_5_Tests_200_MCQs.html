@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formation Civique – 5 MCQ Tests (200 Questions)</title>
+  <style>
+    :root {
+      --blue:   #002395;
+      --red:    #ED2939;
+      --white:  #FFFFFF;
+      --light:  #f4f6fb;
+      --card:   #ffffff;
+      --border: #dde3f0;
+      --text:   #1a1a2e;
+      --muted:  #6b7280;
+      --easy:   #16a34a;
+      --medium: #d97706;
+      --hard:   #dc2626;
+      --correct:#16a34a;
+      --wrong:  #dc2626;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--light); color: var(--text); min-height: 100vh; }
+
+    header {
+      background: linear-gradient(135deg, var(--blue) 0%, #1a3a8f 100%);
+      color: var(--white); padding: 24px 24px 18px; text-align: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 3px 16px rgba(0,35,149,0.35);
+    }
+    header .flag { font-size: 2rem; margin-bottom: 4px; }
+    header h1 { font-size: 1.4rem; font-weight: 700; }
+    header p  { font-size: .85rem; opacity: .85; margin-top: 4px; }
+
+    #scorebar {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: center; gap: 28px;
+      flex-wrap: wrap; font-size: .85rem; color: var(--muted);
+      position: sticky; top: 88px; z-index: 99; box-shadow: var(--shadow);
+    }
+    #scorebar span { display: flex; align-items: center; gap: 5px; }
+    #scorebar b { font-size: 1rem; }
+    .s-correct b { color: var(--correct); }
+    .s-wrong b { color: var(--wrong); }
+    .s-total b { color: var(--blue); }
+    .s-pct b { color: var(--blue); }
+
+    #progress-wrap { background: #e5e7eb; height: 6px; width: 100%; }
+    #progress-bar { height: 6px; background: linear-gradient(90deg, var(--blue), var(--red)); width: 0%; transition: width .4s ease; }
+
+    /* TEST SELECTOR */
+    #test-selector {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      padding: 18px 24px 6px; max-width: 900px; margin: 0 auto;
+    }
+    .test-btn {
+      padding: 10px 22px; border-radius: 12px; border: 2px solid var(--blue);
+      background: var(--white); color: var(--blue); font-size: .9rem; font-weight: 700;
+      cursor: pointer; transition: all .25s;
+    }
+    .test-btn:hover, .test-btn.active { background: var(--blue); color: var(--white); transform: scale(1.05); }
+
+    /* TOPIC TABS */
+    #tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      padding: 14px 24px 6px; max-width: 1100px; margin: 0 auto;
+    }
+    .tab-btn {
+      padding: 6px 14px; border-radius: 20px; border: 2px solid var(--blue);
+      background: var(--white); color: var(--blue); font-size: .78rem; font-weight: 600;
+      cursor: pointer; transition: all .2s;
+    }
+    .tab-btn:hover, .tab-btn.active { background: var(--blue); color: var(--white); }
+
+    #controls {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      padding: 6px 24px 14px; max-width: 1100px; margin: 0 auto;
+    }
+    #controls label { font-size: .83rem; color: var(--muted); }
+    #diff-filter {
+      padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border);
+      font-size: .83rem; color: var(--text);
+    }
+    #reset-btn {
+      padding: 6px 16px; border-radius: 8px; border: none;
+      background: var(--red); color: var(--white); font-size: .82rem; font-weight: 600;
+      cursor: pointer; transition: background .2s; margin-left: auto;
+    }
+    #reset-btn:hover { background: #c0232f; }
+
+    /* QUIZ */
+    #quiz-container { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+    .section-title {
+      font-size: 1.1rem; font-weight: 700; color: var(--blue);
+      margin: 28px 0 14px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--blue); display: flex; align-items: center; gap: 8px;
+    }
+    .q-card {
+      background: var(--card); border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 16px; border: 1px solid var(--border);
+      box-shadow: var(--shadow); transition: border-color .3s;
+    }
+    .q-card.correct-card { border-color: var(--correct); }
+    .q-card.wrong-card { border-color: var(--wrong); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .q-num { background: var(--blue); color: var(--white); border-radius: 8px; padding: 3px 10px; font-size: .78rem; font-weight: 700; }
+    .q-diff {
+      border-radius: 8px; padding: 3px 10px; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    }
+    .q-diff.easy { background: #dcfce7; color: var(--easy); }
+    .q-diff.medium { background: #fef3c7; color: var(--medium); }
+    .q-diff.hard { background: #fee2e2; color: var(--hard); }
+    .q-text { font-size: 1rem; font-weight: 600; margin-bottom: 14px; line-height: 1.5; }
+    .opts { display: flex; flex-direction: column; gap: 8px; }
+    .opt-btn {
+      width: 100%; text-align: left; padding: 12px 16px;
+      border: 2px solid var(--border); border-radius: 10px;
+      background: var(--white); font-size: .92rem; cursor: pointer;
+      transition: all .2s; color: var(--text); line-height: 1.4;
+    }
+    .opt-btn:hover:not(.locked) { border-color: var(--blue); background: #eef2ff; }
+    .opt-btn.selected-correct { border-color: var(--correct); background: #dcfce7; font-weight: 600; }
+    .opt-btn.selected-wrong { border-color: var(--wrong); background: #fee2e2; }
+    .opt-btn.show-correct { border-color: var(--correct); background: #dcfce7; }
+    .opt-btn.locked { cursor: default; opacity: .85; }
+    .explanation {
+      margin-top: 10px; padding: 10px 14px; border-radius: 8px;
+      font-size: .85rem; line-height: 1.5;
+    }
+    .explanation.correct-exp { background: #dcfce7; color: #166534; }
+    .explanation.wrong-exp { background: #fee2e2; color: #991b1b; }
+    .hidden { display: none !important; }
+
+    /* RESULT MODAL */
+    #result-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5);
+      z-index: 200; justify-content: center; align-items: center;
+    }
+    #result-overlay.show { display: flex; }
+    #result-box {
+      background: var(--white); border-radius: 20px; padding: 40px;
+      max-width: 420px; width: 90%; text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,.2);
+    }
+    #result-box h2 { font-size: 1.5rem; color: var(--blue); margin: 10px 0; }
+    #result-box .score-big { font-size: 3rem; font-weight: 800; color: var(--blue); }
+    #result-box .score-label { font-size: 1rem; color: var(--muted); }
+    #result-box .grade { font-size: 1.3rem; font-weight: 700; margin-top: 10px; }
+    .grade.pass { color: var(--correct); }
+    .grade.fail { color: var(--wrong); }
+    #close-result {
+      margin-top: 20px; padding: 10px 30px; border-radius: 10px; border: none;
+      background: var(--blue); color: var(--white); font-size: 1rem;
+      font-weight: 600; cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.15rem; }
+      .q-card { padding: 14px; }
+      #test-selector { gap: 6px; }
+      .test-btn { padding: 8px 14px; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="flag">🇫🇷</div>
+  <h1>Formation Civique – MCQ Practice Tests</h1>
+  <p>200 Questions · 5 Tests of 40 · All Themes Covered</p>
+</header>
+
+<div id="scorebar">
+  <span class="s-correct">✅ Correct: <b id="sc-correct">0</b></span>
+  <span class="s-wrong">❌ Wrong: <b id="sc-wrong">0</b></span>
+  <span class="s-total">📝 Answered: <b id="sc-answered">0</b> / <b id="sc-total">40</b></span>
+  <span class="s-pct">📊 Score: <b id="sc-pct">0%</b></span>
+</div>
+<div id="progress-wrap"><div id="progress-bar"></div></div>
+
+<div id="test-selector">
+  <button class="test-btn active" onclick="switchTest(0)">📝 Test 1</button>
+  <button class="test-btn" onclick="switchTest(1)">📝 Test 2</button>
+  <button class="test-btn" onclick="switchTest(2)">📝 Test 3</button>
+  <button class="test-btn" onclick="switchTest(3)">📝 Test 4</button>
+  <button class="test-btn" onclick="switchTest(4)">📝 Test 5</button>
+</div>
+
+<div id="tabs"></div>
+<div id="controls">
+  <label>Difficulty:</label>
+  <select id="diff-filter" onchange="filterQuiz()">
+    <option value="all">All</option>
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+  <button id="reset-btn" onclick="resetTest()">🔄 Reset Test</button>
+</div>
+
+<div id="quiz-container"></div>
+
+<div id="result-overlay">
+  <div id="result-box">
+    <div style="font-size:3rem">🇫🇷</div>
+    <h2>Test Complete!</h2>
+    <div class="score-big" id="res-score"></div>
+    <div class="score-label" id="res-label"></div>
+    <div class="grade" id="res-grade"></div>
+    <button id="close-result" onclick="document.getElementById('result-overlay').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<script>
+const allTests = [
+[
+  { id:70, topic:"parenthood", diff:"medium", text:"What approach should professionals use when supporting families?", opts:["Judgment and directive advice","Benevolence, listening, without judgment, prejudice, or obligation","Strict enforcement of rules","Only providing financial assistance"], ans:1 },
+  { id:158, topic:"principles", diff:"hard", text:"What does the Preamble of the 1946 Constitution guarantee that the 1958 Constitution references?", opts:["Military rights","Economic and social rights: right to work, education, health, social security","Only property rights","Only voting rights"], ans:1 },
+  { id:29, topic:"institutional", diff:"easy", text:"Who appoints the Prime Minister in France?", opts:["The National Assembly","The Senate","The President of the Republic","The Constitutional Council"], ans:2 },
+  { id:146, topic:"history", diff:"easy", text:"Which river runs through Paris?", opts:["The Loire","The Rhône","The Seine","The Garonne"], ans:2 },
+  { id:47, topic:"rights", diff:"hard", text:"What are the limits of freedom of expression in France?", opts:["There are no limits to freedom of expression","Freedom of expression is limited by laws against hate speech, defamation, and incitement to violence","Only political speech is protected","Freedom of expression only applies to the press"], ans:1 },
+  { id:122, topic:"history", diff:"easy", text:"What are the lois Jules Ferry (1881-1882)?", opts:["Laws establishing the republic","Laws making primary school free, secular, and compulsory","Laws on military service","Laws on labor rights"], ans:1 },
+  { id:169, topic:"rights", diff:"hard", text:"What are the conditions for acquiring French nationality by marriage?", opts:["Automatic upon marriage","After 4 years of marriage with continuous community of life and French language proficiency","After 1 year of marriage","Only if the spouse was born in France"], ans:1 },
+  { id:181, topic:"rights", diff:"easy", text:"What is the SMIC in France?", opts:["A tax","The minimum wage (salaire minimum interprofessionnel de croissance)","A social benefit","An insurance"], ans:1 },
+  { id:73, topic:"parenthood", diff:"hard", text:"What is the importance of gender equality in parenting in France?", opts:["Only mothers are responsible for childcare","Equality between women and men in parenthood and within the family sphere","Fathers have more legal rights over children","Gender roles in parenting are fixed by law"], ans:1 },
+  { id:64, topic:"history", diff:"hard", text:"In which year was the current French Constitution (Fifth Republic) adopted?", opts:["1945","1958","1968","1981"], ans:1 },
+  { id:135, topic:"history", diff:"easy", text:"Who wrote 'Les Misérables'?", opts:["Molière","Victor Hugo","Albert Camus","Voltaire"], ans:1 },
+  { id:77, topic:"parenthood", diff:"medium", text:"What qualifications should professionals providing parental support have?", opts:["No specific qualifications needed","Competence or training in the field, with time for experience sharing and practice analysis","Only medical degrees","Only teaching qualifications"], ans:1 },
+  { id:52, topic:"rights", diff:"easy", text:"Is domestic violence prohibited in France?", opts:["Only severe forms of violence are prohibited","Yes, all forms of violence in the domestic sphere are prohibited by law","It is a private matter","Only violence against children is prohibited"], ans:1 },
+  { id:180, topic:"rights", diff:"medium", text:"What is the standard working week in France?", opts:["30 hours","35 hours","40 hours","45 hours"], ans:1 },
+  { id:86, topic:"review", diff:"medium", text:"Does France have a written Constitution?", opts:["No, France has an unwritten constitution like the UK","Yes","Only partially written","The Constitution is secret"], ans:1 },
+  { id:19, topic:"principles", diff:"easy", text:"Which principle ensures that all citizens have equal access to public services?", opts:["Fraternity","Liberty","Equality","Laïcité"], ans:2 },
+  { id:190, topic:"principles", diff:"hard", text:"What does 'République sociale' guarantee according to the Constitution?", opts:["Only economic freedom","The right to health protection, material security, rest, leisure, and social assistance","Only military protection","Only political rights"], ans:1 },
+  { id:143, topic:"history", diff:"easy", text:"Which mountain range separates France from Spain?", opts:["The Alps","The Pyrenees","The Vosges","The Jura"], ans:1 },
+  { id:82, topic:"review", diff:"medium", text:"Can EU citizens living in France vote in European Parliament elections?", opts:["No, only French citizens can vote","Yes, they can vote for European Parliament members","Only if they have lived in France for more than 5 years","Only in local elections"], ans:1 },
+  { id:106, topic:"history", diff:"easy", text:"Who is considered the founder of the Fifth Republic?", opts:["François Mitterrand","Charles de Gaulle","Napoléon III","Georges Pompidou"], ans:1 },
+  { id:166, topic:"institutional", diff:"hard", text:"What are the main EU institutions?", opts:["Only the European Parliament","European Parliament, European Council, European Commission, Council of the EU, Court of Justice","The UN and NATO","Only the European Commission"], ans:1 },
+  { id:154, topic:"principles", diff:"medium", text:"Can public school teachers wear religious symbols while teaching?", opts:["Yes, freedom of religion allows it","No, public officials must maintain religious neutrality","Only small symbols are allowed","Only Christian symbols are allowed"], ans:1 },
+  { id:45, topic:"rights", diff:"medium", text:"What is the role of trade unions (syndicats) in France?", opts:["They control the government","They represent and defend workers' rights","They manage national education","They control immigration"], ans:1 },
+  { id:41, topic:"rights", diff:"hard", text:"What does the right to asylum mean in France?", opts:["Any foreigner can automatically obtain French citizenship","Persecuted individuals can request protection in France","France must accept all refugees without conditions","Only EU citizens can request asylum"], ans:1 },
+  { id:13, topic:"principles", diff:"hard", text:"How does laïcité protect individual freedoms in France?", opts:["By imposing one secular worldview on all citizens","By ensuring the state does not favor any religion, allowing freedom of conscience","By restricting religious expression to private homes only","By requiring citizens to declare no religious affiliation"], ans:1 },
+  { id:161, topic:"institutional", diff:"easy", text:"What is the Élysée Palace?", opts:["The seat of Parliament","The official residence and office of the President of the Republic","The Supreme Court building","A museum"], ans:1 },
+  { id:182, topic:"rights", diff:"medium", text:"What is the Sécurité sociale in France?", opts:["Private insurance","The public social protection system covering health, retirement, family, and work accidents","A police service","A bank"], ans:1 },
+  { id:136, topic:"history", diff:"medium", text:"What was the Front Populaire (1936)?", opts:["A military alliance","A left-wing coalition government that introduced paid holidays and the 40-hour work week","A far-right movement","A colonial administration"], ans:1 },
+  { id:20, topic:"principles", diff:"hard", text:"What is the concept of 'République sociale' in the French Constitution?", opts:["A state with no social programs","A republic that guarantees social rights such as education, health, and work","A communist system","A welfare state without individual rights"], ans:1 },
+  { id:7, topic:"principles", diff:"medium", text:"Who or what does 'Marianne' represent in French symbolism?", opts:["The first queen of France","A famous French revolutionary","The personification of the French Republic","The patron saint of France"], ans:2 },
+  { id:58, topic:"rights", diff:"medium", text:"What is rape (viol) defined as in French law?", opts:["Only penetration by a male perpetrator","Any non-consensual sexual act of penetration","Only assault by a stranger","A minor offense"], ans:1 },
+  { id:35, topic:"institutional", diff:"medium", text:"What is the significance of the French Republic being 'democratic'?", opts:["Only elected officials have rights","Citizens participate in governance through elections and referendums","The President makes all decisions alone","The Senate has supreme power"], ans:1 },
+  { id:123, topic:"history", diff:"hard", text:"What was the Treaty of Maastricht (1992)?", opts:["A peace treaty ending WWII","The treaty transforming the EEC into the European Union","A trade agreement with the US","France's entry into NATO"], ans:1 },
+  { id:188, topic:"history", diff:"hard", text:"What is the significance of Voltaire for French Republican values?", opts:["He was a king","He championed freedom of thought, tolerance, and the fight against injustice","He invented the guillotine","He wrote the Constitution"], ans:1 },
+  { id:105, topic:"history", diff:"medium", text:"In which year was slavery definitively abolished in France?", opts:["1794","1815","1848","1905"], ans:2 },
+  { id:140, topic:"history", diff:"hard", text:"What did Jacques Chirac officially recognize in 1995?", opts:["French collaboration in the Holocaust and the Vel d'Hiv roundup","France's role in the slave trade","The rights of indigenous peoples","French war crimes in Algeria"], ans:0 },
+  { id:23, topic:"institutional", diff:"easy", text:"How long is the presidential term in France?", opts:["4 years","5 years","6 years","7 years"], ans:1 },
+  { id:92, topic:"review", diff:"medium", text:"Is gender equality a constitutional principle in France?", opts:["No, it is only a social norm","Yes, equality between men and women is a fundamental principle","Only in the workplace","Only in political representation"], ans:1 },
+  { id:112, topic:"history", diff:"easy", text:"What was the Shoah?", opts:["A French military campaign","The systematic genocide of Jews during WWII","A French revolution","A colonial war"], ans:1 },
+  { id:36, topic:"institutional", diff:"easy", text:"At what age can French citizens vote?", opts:["16 years old","18 years old","21 years old","25 years old"], ans:1 }
+],
+[
+  { id:151, topic:"principles", diff:"medium", text:"What does Article 1 of the French Constitution state?", opts:["France is a monarchy","France is an indivisible, secular, democratic, and social Republic ensuring equality","France is a federal state","France has no official religion but promotes Christianity"], ans:1 },
+  { id:3, topic:"principles", diff:"hard", text:"The principle of 'Equality' in France is divided into multiple aspects. Which statement accurately reflects one of these aspects?", opts:["Equality only applies to economic matters","Equality means identical treatment regardless of individual circumstances","Equality includes equal rights before the law and equal access to public services","Equality excludes considerations of gender differences"], ans:2 },
+  { id:43, topic:"rights", diff:"easy", text:"What is the right to education in France?", opts:["Education is optional for all children","Education is compulsory for children from 3 to 16 years old","Education is only compulsory for children from 6 to 14 years old","Education is only available to French citizens"], ans:1 },
+  { id:60, topic:"rights", diff:"hard", text:"What international conventions does France adhere to regarding human rights?", opts:["France is not party to any international human rights conventions","France is party to international conventions that complement national law","Only the European Convention on Human Rights","Only UN conventions"], ans:1 },
+  { id:192, topic:"history", diff:"medium", text:"What was the CECA (1951)?", opts:["A military alliance","The European Coal and Steel Community, the precursor to the EU","A colonial administration","A French bank"], ans:1 },
+  { id:193, topic:"rights", diff:"medium", text:"What is the 'droit d'asile' (right of asylum) based on?", opts:["Economic need","Persecution for political opinions, religious beliefs, or belonging to a social group","Desire for better education","Family reunification"], ans:1 },
+  { id:6, topic:"principles", diff:"easy", text:"What is the name of the French national anthem?", opts:["La Marseillaise","La Parisienne","La Française","La République"], ans:0 },
+  { id:178, topic:"rights", diff:"hard", text:"What is the CAF (Caisse d'Allocations Familiales)?", opts:["A bank","A public body that provides family benefits, housing aid, and social support","A hospital network","A school system"], ans:1 },
+  { id:144, topic:"history", diff:"medium", text:"What is the official language of France according to the Constitution?", opts:["French and English","French","French, Basque, and Breton","There is no official language"], ans:1 },
+  { id:103, topic:"history", diff:"easy", text:"Who was Napoleon Bonaparte?", opts:["A king of France","An emperor who ruled France from 1804 to 1815","A philosopher of the Enlightenment","The first president of France"], ans:1 },
+  { id:108, topic:"history", diff:"hard", text:"What was the Appel du 18 juin 1940?", opts:["A declaration of war by France","De Gaulle's radio appeal from London calling for continued resistance","The armistice with Germany","A peace treaty"], ans:1 },
+  { id:83, topic:"review", diff:"easy", text:"At what age can French citizens vote for the first time?", opts:["16 years old","18 years old","21 years old","25 years old"], ans:1 },
+  { id:167, topic:"rights", diff:"easy", text:"What is the emergency phone number in France (equivalent of 911)?", opts:["999","112","911","100"], ans:1 },
+  { id:88, topic:"review", diff:"medium", text:"What does the 'rule of law' (État de droit) mean?", opts:["The government can act above the law","Everyone, including authorities, is subject to the law","Only citizens must follow the law","The law only applies to criminal matters"], ans:1 },
+  { id:184, topic:"institutional", diff:"medium", text:"What are the three levels of local government in France?", opts:["Province, county, village","Commune, département, région","City, state, federation","Arrondissement, canton, province"], ans:1 },
+  { id:189, topic:"rights", diff:"hard", text:"What is the JDC (Journée Défense et Citoyenneté)?", opts:["A military training program","A mandatory one-day civic and defense awareness session for all young French citizens","A voting day","A national holiday"], ans:1 },
+  { id:24, topic:"institutional", diff:"medium", text:"What are the two chambers of the French Parliament?", opts:["The Senate and the House of Representatives","The National Assembly and the Senate","The Congress and the Senate","The Chamber of Deputies and the Senate"], ans:1 },
+  { id:116, topic:"history", diff:"medium", text:"Who was the French president who abolished the death penalty?", opts:["Valéry Giscard d'Estaing","François Mitterrand","Jacques Chirac","Charles de Gaulle"], ans:1 },
+  { id:102, topic:"history", diff:"medium", text:"Who wrote the Declaration of the Rights of Man and of the Citizen in 1789?", opts:["Napoleon Bonaparte","The National Constituent Assembly","Louis XVI","Voltaire"], ans:1 },
+  { id:5, topic:"principles", diff:"easy", text:"The French national flag consists of which three colors?", opts:["Red, White, Green","Blue, White, Red","Blue, Yellow, Red","Green, White, Red"], ans:1 },
+  { id:117, topic:"history", diff:"hard", text:"What is the Loi Veil (1975)?", opts:["A law on immigration","A law legalizing abortion (IVG)","A law on education reform","A law on military service"], ans:1 },
+  { id:165, topic:"institutional", diff:"medium", text:"How is the President of France elected?", opts:["By Parliament","By direct universal suffrage in two rounds","By the Senate","By an electoral college"], ans:1 },
+  { id:153, topic:"principles", diff:"easy", text:"What does 'secular' (laïque) mean in the French context?", opts:["Anti-religious","The state is neutral toward all religions and does not favor any","Atheism is the state belief","Religion is banned"], ans:1 },
+  { id:114, topic:"history", diff:"hard", text:"What was the significance of the law of 1905 in France?", opts:["It established compulsory education","It separated Church and State (laïcité)","It abolished the death penalty","It gave women the right to vote"], ans:1 },
+  { id:38, topic:"institutional", diff:"medium", text:"Can French citizens living abroad vote in national elections?", opts:["No, they must return to France to vote","Yes, they can vote at French consulates or by proxy","Only in presidential elections","Only if they have lived abroad for less than 5 years"], ans:1 },
+  { id:2, topic:"principles", diff:"medium", text:"Which best describes the principle of 'Liberty' in the French Republic?", opts:["The right to do whatever one wants without restrictions","Freedom of expression, movement, and thought within the framework of law","Only political freedom without economic considerations","Freedom exclusively for French citizens"], ans:1 },
+  { id:147, topic:"history", diff:"medium", text:"What is the significance of Molière in French culture?", opts:["He was a king","He is considered the father of French comedy and theater","He invented the printing press","He was a famous general"], ans:1 },
+  { id:69, topic:"parenthood", diff:"hard", text:"What is the principle of 'parentalité positive' (positive parenting)?", opts:["Strict discipline without emotional support","Recognizing and valuing parents' roles, projects, and competencies with support built with them","Leaving children to make all decisions","Only focusing on academic achievement"], ans:1 },
+  { id:172, topic:"rights", diff:"hard", text:"What is the principle of 'droit du sol' in France?", opts:["The right to own land","A child born in France to foreign parents can acquire French nationality under certain conditions","All people born in France are automatically French","Only applies to EU citizens"], ans:1 },
+  { id:28, topic:"institutional", diff:"medium", text:"What is the role of the Constitutional Council in France?", opts:["To govern the country when the President is absent","To ensure that laws are constitutional","To manage elections","To control the media"], ans:1 },
+  { id:71, topic:"parenthood", diff:"easy", text:"Which families are entitled to parental support services in France?", opts:["Only low-income families","All families regardless of family situation, social background, or cultural references","Only single-parent families","Only families with more than two children"], ans:1 },
+  { id:40, topic:"rights", diff:"medium", text:"Which of the following is a fundamental right guaranteed by the French Constitution?", opts:["The right to unlimited wealth","Freedom of expression","The right to own property without any restrictions","The right to refuse military service under all circumstances"], ans:1 },
+  { id:51, topic:"rights", diff:"medium", text:"What are the civic obligations of French citizens beyond voting?", opts:["There are no other obligations","Obligations such as jury duty, civic participation, and respecting the law","Only military service","Only paying taxes"], ans:1 },
+  { id:129, topic:"history", diff:"medium", text:"What was the role of Joséphine Baker during WWII?", opts:["She was a collaborator","She was a resistance agent who spied for France","She led the Free French Forces","She was a war journalist"], ans:1 },
+  { id:156, topic:"principles", diff:"easy", text:"What animal is an unofficial symbol of France?", opts:["The eagle","The lion","The rooster (le coq)","The bear"], ans:2 },
+  { id:121, topic:"history", diff:"medium", text:"What happened on D-Day (June 6, 1944)?", opts:["France surrendered to Germany","The Allied forces landed in Normandy to liberate France","Paris was bombed","De Gaulle returned to France"], ans:1 },
+  { id:104, topic:"history", diff:"hard", text:"What important legal document did Napoleon establish in 1804?", opts:["The Constitution of the Fifth Republic","The Code civil (Civil Code)","The Declaration of Rights","The Treaty of Versailles"], ans:1 },
+  { id:68, topic:"parenthood", diff:"medium", text:"What is the number to call to report school bullying (harcèlement scolaire) in France?", opts:["119","3020","3114","17"], ans:1 },
+  { id:31, topic:"institutional", diff:"medium", text:"What is the role of the Conseil d'État in France?", opts:["It is the highest court for civil matters","It advises the government on legislation and is the highest administrative court","It manages the national budget","It controls foreign policy"], ans:1 },
+  { id:90, topic:"review", diff:"medium", text:"What social rights does the French Constitution guarantee?", opts:["Only the right to vote","Rights including work, education, health, and social security","Only property rights","No social rights are guaranteed"], ans:1 }
+],
+[
+  { id:134, topic:"history", diff:"medium", text:"When did Algeria gain independence from France?", opts:["1945","1954","1962","1975"], ans:2 },
+  { id:12, topic:"principles", diff:"medium", text:"What is the historical significance of the 1905 law regarding laïcité?", opts:["It established Catholicism as the state religion","It formalized the separation of church and state","It banned all religious practices in France","It created a state-controlled church"], ans:1 },
+  { id:91, topic:"review", diff:"hard", text:"What is the role of the Défenseur des droits?", opts:["To defend France in international disputes","An independent authority protecting citizens' rights and freedoms","To manage the national budget","To control immigration"], ans:1 },
+  { id:49, topic:"rights", diff:"easy", text:"What is the duty to pay taxes in France?", opts:["Only the wealthy must pay taxes","All residents with income above a certain threshold must contribute to public finances","Taxes are optional","Only French citizens must pay taxes"], ans:1 },
+  { id:8, topic:"principles", diff:"easy", text:"When is the French National Day (Fête Nationale) celebrated?", opts:["May 1st","July 14th","November 11th","December 25th"], ans:1 },
+  { id:65, topic:"parenthood", diff:"easy", text:"What are the primary responsibilities of parents in France?", opts:["Only providing financial support","Ensuring the well-being, safety, education, and development of their children","Only ensuring school attendance","Only providing food and shelter"], ans:1 },
+  { id:93, topic:"review", diff:"hard", text:"Why are ostentatious religious symbols prohibited in French public schools?", opts:["For aesthetic reasons","To maintain neutrality and protect students' freedom of conscience","To promote atheism","Because religion is illegal in France"], ans:1 },
+  { id:148, topic:"history", diff:"hard", text:"What are the five overseas regions (DROM) of France?", opts:["Corsica, Monaco, Andorra, Channel Islands, Réunion","Guadeloupe, Martinique, Guyane, Réunion, Mayotte","Tahiti, New Caledonia, Réunion, Corsica, Guadeloupe","Guadeloupe, Martinique, Corsica, Monaco, Guyane"], ans:1 },
+  { id:54, topic:"rights", diff:"hard", text:"What is the legal definition of sexual harassment in France?", opts:["Only physical contact constitutes harassment","Repeated remarks or behaviors of a sexual or sexist nature that degrade dignity","Only harassment by employers is recognized","Sexual harassment is not specifically defined in French law"], ans:1 },
+  { id:81, topic:"review", diff:"hard", text:"How does laïcité relate to freedom of conscience?", opts:["Laïcité restricts freedom of conscience","Laïcité guarantees freedom of conscience by ensuring state neutrality","Laïcité only applies to public officials","Laïcité prohibits all religious expression"], ans:1 },
+  { id:1, topic:"principles", diff:"easy", text:"What is the motto of the French Republic?", opts:["Liberty, Equality, Justice","Liberty, Equality, Fraternity","Freedom, Democracy, Unity","Justice, Liberty, Solidarity"], ans:1 },
+  { id:30, topic:"institutional", diff:"hard", text:"What happens if the National Assembly passes a motion of censure?", opts:["The President must resign","The government must resign","New presidential elections are held","The Senate is dissolved"], ans:1 },
+  { id:44, topic:"rights", diff:"hard", text:"What does the right to work (droit au travail) entail in France?", opts:["The state must provide a job to every citizen","Citizens have the right to seek employment and the state must support this right","Only French citizens have the right to work","The right to work without any social protections"], ans:1 },
+  { id:145, topic:"history", diff:"hard", text:"What is the approximate population of France (metropolitan + overseas)?", opts:["45 million","55 million","68 million","82 million"], ans:2 },
+  { id:89, topic:"review", diff:"easy", text:"What is the capital of France?", opts:["Lyon","Marseille","Paris","Bordeaux"], ans:2 },
+  { id:66, topic:"parenthood", diff:"medium", text:"What should a parent do if their child is being bullied at school?", opts:["Handle it privately without involving the school","Contact the school to report the violence","Wait for the situation to resolve itself","Move the child to a different school immediately"], ans:1 },
+  { id:16, topic:"principles", diff:"medium", text:"What is the significance of the Declaration of the Rights of Man and of the Citizen (1789)?", opts:["It established the monarchy","It proclaimed fundamental rights and freedoms for all citizens","It created the French army","It defined France's borders"], ans:1 },
+  { id:139, topic:"history", diff:"medium", text:"Who was Simone de Beauvoir?", opts:["A queen of France","A philosopher and feminist who wrote 'The Second Sex'","A singer","A scientist"], ans:1 },
+  { id:18, topic:"principles", diff:"medium", text:"What role does the Constitutional Council play in France?", opts:["It governs the country","It ensures laws conform to the Constitution","It manages foreign policy","It controls the economy"], ans:1 },
+  { id:187, topic:"history", diff:"medium", text:"What was the Enlightenment (Les Lumières)?", opts:["A religious movement","An 18th-century philosophical movement promoting reason, liberty, and progress that influenced the Revolution","A military campaign","An artistic style"], ans:1 },
+  { id:159, topic:"institutional", diff:"medium", text:"How many members does the National Assembly have?", opts:["348","449","577","650"], ans:2 },
+  { id:39, topic:"rights", diff:"easy", text:"What is the minimum voting age in France?", opts:["16","18","21","25"], ans:1 },
+  { id:34, topic:"institutional", diff:"hard", text:"How does the French government ensure the principle of 'rule of law' (État de droit)?", opts:["By giving the President unlimited powers","By ensuring all authorities are subject to the law","By allowing the government to override court decisions","By concentrating power in the Parliament"], ans:1 },
+  { id:101, topic:"history", diff:"easy", text:"In which year was the storming of the Bastille?", opts:["1776","1789","1792","1804"], ans:1 },
+  { id:185, topic:"principles", diff:"easy", text:"What does the French Republic guarantee regarding education?", opts:["Education is private only","Free, secular, and compulsory public education","Education only for citizens","Education only until age 12"], ans:1 },
+  { id:132, topic:"history", diff:"easy", text:"Who painted 'La Liberté guidant le peuple'?", opts:["Claude Monet","Paul Cézanne","Eugène Delacroix","Auguste Renoir"], ans:2 },
+  { id:107, topic:"history", diff:"medium", text:"What was the Vichy regime (1940-1944)?", opts:["A democratic government during WWII","A collaborationist regime with Nazi Germany led by Pétain","A resistance government based in London","The post-war provisional government"], ans:1 },
+  { id:173, topic:"rights", diff:"easy", text:"What number should you call for medical emergencies in France?", opts:["17 (Police)","15 (SAMU)","18 (Pompiers)","112 (European emergency)"], ans:1 },
+  { id:59, topic:"rights", diff:"easy", text:"Is female genital mutilation (FGM) legal in France?", opts:["It is legal for religious reasons","It is a serious crime strictly prohibited by French law","It is only prohibited for minors","It is a cultural practice that is tolerated"], ans:1 },
+  { id:46, topic:"rights", diff:"easy", text:"What is the right to strike in France?", opts:["It is prohibited in all sectors","Workers have the right to strike to defend their professional interests","Only civil servants can strike","Strikes are only allowed with government permission"], ans:1 },
+  { id:62, topic:"history", diff:"easy", text:"In which year did the French Revolution begin?", opts:["1789","1799","1815","1848"], ans:0 },
+  { id:10, topic:"principles", diff:"medium", text:"What is the fundamental principle of 'laïcité' in France?", opts:["The promotion of atheism in public spaces","The separation of church and state, ensuring religious neutrality","The prohibition of all religious practices","The establishment of one official state religion"], ans:1 },
+  { id:149, topic:"history", diff:"easy", text:"What is Édith Piaf famous for?", opts:["Being a scientist","Being one of France's greatest singers (La Vie en rose)","Being a politician","Being an architect"], ans:1 },
+  { id:179, topic:"rights", diff:"easy", text:"What is the legal blood alcohol limit for drivers in France?", opts:["0.0 g/L","0.5 g/L","0.8 g/L","1.0 g/L"], ans:1 },
+  { id:141, topic:"history", diff:"easy", text:"How many regions does metropolitan France have?", opts:["13","18","22","26"], ans:0 },
+  { id:183, topic:"institutional", diff:"easy", text:"What is the role of the mayor (maire) in France?", opts:["Head of the national government","Head of the commune's administration, performs marriages, manages local services","Head of the department","Head of the region"], ans:1 },
+  { id:78, topic:"parenthood", diff:"hard", text:"Which legal article governs parental support services in France?", opts:["Article 371-1 of the Civil Code","Article L. 214-1-2 of the Code of Social Action and Families","Article 1 of the Constitution","Article 40 of the Labor Code"], ans:1 },
+  { id:32, topic:"institutional", diff:"easy", text:"What does universal suffrage mean in France?", opts:["Only property owners can vote","All French citizens aged 18 and over have the right to vote","Only men can vote","Voting is mandatory for all citizens"], ans:1 },
+  { id:128, topic:"history", diff:"easy", text:"What does the date May 8th commemorate in France?", opts:["The French Revolution","The end of World War II in Europe (1945)","The abolition of slavery","The founding of the EU"], ans:1 },
+  { id:37, topic:"institutional", diff:"hard", text:"What is the difference between the legislative and executive branches in France?", opts:["They have the same powers","The legislative branch makes laws; the executive branch implements them","The executive branch makes laws; the legislative branch implements them","There is no distinction"], ans:1 }
+],
+[
+  { id:137, topic:"history", diff:"hard", text:"What was the significance of the ordonnance de Villers-Cotterêts (1539)?", opts:["It established democracy","It made French the official language of administration instead of Latin","It abolished feudalism","It created the first parliament"], ans:1 },
+  { id:200, topic:"history", diff:"medium", text:"Who was the first woman to enter the Panthéon on her own merit?", opts:["Simone de Beauvoir","Marie Curie","Simone Veil","Joséphine Baker"], ans:1 },
+  { id:195, topic:"history", diff:"hard", text:"What was the Dreyfus Affair?", opts:["A colonial conflict","A political scandal involving the wrongful conviction of a Jewish army officer, revealing antisemitism","A financial crisis","A royal succession dispute"], ans:1 },
+  { id:177, topic:"rights", diff:"medium", text:"Is forced marriage legal in France?", opts:["Yes, if parents agree","No, forced marriage is strictly prohibited and is a criminal offense","Only for religious marriages","It depends on the region"], ans:1 },
+  { id:26, topic:"institutional", diff:"medium", text:"How are members of the National Assembly elected in France?", opts:["By proportional representation","By direct universal suffrage in single-member constituencies","By the Senate","By the President"], ans:1 },
+  { id:75, topic:"parenthood", diff:"easy", text:"What types of parental support interventions exist in France?", opts:["Only group sessions","Diverse interventions including collective, individual, in dedicated places, mobile, or at home","Only home visits","Only telephone support"], ans:1 },
+  { id:21, topic:"institutional", diff:"easy", text:"What type of government does France have?", opts:["Constitutional monarchy","Presidential republic","Semi-presidential republic","Parliamentary monarchy"], ans:2 },
+  { id:176, topic:"rights", diff:"easy", text:"What is the legal marriage age in France?", opts:["16 years old","18 years old","21 years old","There is no minimum age"], ans:1 },
+  { id:85, topic:"review", diff:"hard", text:"What is the role of the Senate in the French legislative process?", opts:["It has no role in making laws","It is part of Parliament and participates in making laws","It only ratifies international treaties","It only manages local government"], ans:1 },
+  { id:196, topic:"rights", diff:"easy", text:"What is the number to call fire services (pompiers) in France?", opts:["15","17","18","112"], ans:2 },
+  { id:163, topic:"institutional", diff:"hard", text:"What is the Cour de cassation?", opts:["A military court","The highest court in the French ordinary judicial system","An administrative court","The Constitutional Council"], ans:1 },
+  { id:138, topic:"history", diff:"easy", text:"What is the euro?", opts:["The French national currency since 1789","The common European currency adopted by France in 2002","A cryptocurrency","The British currency"], ans:1 },
+  { id:27, topic:"institutional", diff:"hard", text:"What is the principle of separation of powers in France?", opts:["All power is concentrated in the President","Executive, legislative, and judicial powers are separated to prevent abuse","The church has equal power to the state","Regional governments have more power than the central government"], ans:1 },
+  { id:48, topic:"rights", diff:"medium", text:"What is the principle of non-discrimination in France?", opts:["Discrimination is allowed in private contexts","All forms of discrimination based on origin, sex, religion, etc. are prohibited","Only racial discrimination is prohibited","Non-discrimination only applies to public services"], ans:1 },
+  { id:120, topic:"history", diff:"hard", text:"Who authored the decree abolishing slavery in 1848?", opts:["Napoleon Bonaparte","Victor Hugo","Victor Schoelcher","Marquis de La Fayette"], ans:2 },
+  { id:109, topic:"history", diff:"easy", text:"When did World War I begin and end?", opts:["1914–1918","1939–1945","1870–1871","1904–1908"], ans:0 },
+  { id:79, topic:"review", diff:"easy", text:"What are the colors of the French flag?", opts:["Red, White, Blue","Blue, White, Red","Green, White, Red","Blue, Red, Yellow"], ans:1 },
+  { id:199, topic:"principles", diff:"hard", text:"What is the 'bloc de constitutionnalité' in France?", opts:["A political party","The set of constitutional texts including the 1958 Constitution, 1789 Declaration, 1946 Preamble, and 2004 Environment Charter","A building in Paris","A military formation"], ans:1 },
+  { id:162, topic:"institutional", diff:"medium", text:"Who is the head of government in France?", opts:["The President","The Prime Minister","The Speaker of the Assembly","The President of the Senate"], ans:1 },
+  { id:170, topic:"rights", diff:"easy", text:"Is France a member of the European Union?", opts:["No","Yes, France is a founding member","France joined in 2004","France left the EU"], ans:1 },
+  { id:57, topic:"rights", diff:"hard", text:"What is human trafficking (traite des êtres humains) in French law?", opts:["A legal form of employment agency","A serious crime involving exploitation of persons, strictly prohibited","Only illegal immigration","A civil matter not covered by criminal law"], ans:1 },
+  { id:76, topic:"parenthood", diff:"hard", text:"What principle must professionals maintain when providing parental support?", opts:["They must impose their personal values","Neutrality — political, philosophical, and religious","They must follow religious guidelines","They must enforce government policies strictly"], ans:1 },
+  { id:194, topic:"principles", diff:"medium", text:"Can students wear religious symbols in French public schools?", opts:["Yes, all symbols are allowed","No, conspicuous religious symbols are banned since the 2004 law","Only Christian symbols are allowed","Only outside the classroom"], ans:1 },
+  { id:133, topic:"history", diff:"hard", text:"What was France's colonial empire?", opts:["France never had colonies","France colonized territories in Africa, Asia, and the Caribbean, which gained independence mainly in the 1960s","France only had colonies in Europe","All French colonies became independent in 1789"], ans:1 },
+  { id:11, topic:"principles", diff:"hard", text:"According to French laïcité principles, what is permitted in public spaces?", opts:["Religious proselytism by public officials","Mandatory religious education in public schools","Individual expression of religious beliefs while respecting public order","Display of religious symbols by government representatives"], ans:2 },
+  { id:17, topic:"principles", diff:"hard", text:"How does the French Constitution of 1958 define France?", opts:["A constitutional monarchy","An indivisible, secular, democratic and social Republic","A federal state with autonomous regions","A parliamentary monarchy"], ans:1 },
+  { id:130, topic:"history", diff:"hard", text:"What philosopher theorized the separation of powers (executive, legislative, judicial)?", opts:["Voltaire","Jean-Jacques Rousseau","Montesquieu","Denis Diderot"], ans:2 },
+  { id:56, topic:"rights", diff:"easy", text:"What is the legal status of prostitution in France?", opts:["Prostitution is completely legal","Prostitution itself is not illegal, but soliciting, pimping, and purchasing sexual services are prohibited","Prostitution is completely illegal","Only street prostitution is illegal"], ans:1 },
+  { id:72, topic:"parenthood", diff:"medium", text:"When should parental support ideally begin?", opts:["Only after problems arise","Before the child's arrival and continue until adulthood","Only during the school years","Only during adolescence"], ans:1 },
+  { id:100, topic:"review", diff:"easy", text:"What does the French value of 'Fraternity' imply for society?", opts:["Only family solidarity","Solidarity, mutual aid, and social support systems for all","Only religious charity","Only help for French citizens"], ans:1 },
+  { id:186, topic:"principles", diff:"medium", text:"What is the meaning of the blue and red in the French flag?", opts:["The sky and blood","The colors of Paris (blue and red), with white representing the monarchy","The sea and fire","Liberty and fraternity"], ans:1 },
+  { id:198, topic:"history", diff:"easy", text:"What was the Treaty of Rome (1957)?", opts:["A peace treaty after WWII","The founding treaty of the European Economic Community (EEC)","A colonial agreement","A trade deal with the US"], ans:1 },
+  { id:99, topic:"review", diff:"medium", text:"What is the purpose of the Constitutional Council (Conseil Constitutionnel)?", opts:["To govern France when the President is absent","To ensure laws conform to the Constitution","To manage elections","To advise the President on foreign policy"], ans:1 },
+  { id:124, topic:"history", diff:"medium", text:"What is the law on 'mariage pour tous' (2013)?", opts:["A law on civil partnerships","A law legalizing same-sex marriage","A law on divorce reform","A law on adoption"], ans:1 },
+  { id:97, topic:"review", diff:"medium", text:"What are the conditions for being eligible to vote in France?", opts:["Only being French","Being French, over 18, having full civil rights, and being registered on the electoral roll","Only being over 18","Being a resident of France for more than 5 years"], ans:1 },
+  { id:119, topic:"history", diff:"easy", text:"When was the current French Constitution adopted?", opts:["1946","1958","1968","1981"], ans:1 },
+  { id:164, topic:"institutional", diff:"easy", text:"What is a commune in France?", opts:["A type of school","The smallest administrative division, governed by a mayor","A province","A department"], ans:1 },
+  { id:152, topic:"principles", diff:"hard", text:"What is the 'Contrat d'engagement républicain'?", opts:["A military service contract","A commitment to respect the principles of the Republic required for certain associations and integration processes","A work contract","A marriage contract"], ans:1 },
+  { id:55, topic:"rights", diff:"medium", text:"What protections does France offer to victims of domestic violence?", opts:["No specific protections exist","Multiple protections including restraining orders, emergency housing, and legal aid","Only financial support is available","Victims must leave France to be protected"], ans:1 },
+  { id:127, topic:"history", diff:"hard", text:"In 2024, what right was inscribed in the French Constitution?", opts:["The right to housing","The right to abortion (IVG)","The right to euthanasia","The right to internet access"], ans:1 }
+],
+[
+  { id:113, topic:"history", diff:"medium", text:"When did women obtain the right to vote in France?", opts:["1920","1936","1944","1958"], ans:2 },
+  { id:96, topic:"review", diff:"hard", text:"What does the protection of human dignity mean in French law?", opts:["Only protecting physical integrity","Protection of physical integrity, human dignity, and children's rights","Only protecting adults","It is not a legal concept in France"], ans:1 },
+  { id:50, topic:"rights", diff:"hard", text:"What does civic duty (devoir civique) include in France?", opts:["Only paying taxes","Respecting laws, paying taxes, and respecting republican principles","Only voting in elections","Mandatory military service"], ans:1 },
+  { id:9, topic:"principles", diff:"hard", text:"What does the rooster (le coq) symbolize in French culture?", opts:["Agricultural heritage only","A national symbol representing vigilance and pride","The royal family's emblem","A religious symbol"], ans:1 },
+  { id:171, topic:"rights", diff:"medium", text:"What is the Carte Vitale in France?", opts:["An identity card","A health insurance card for accessing the social security system","A driver's license","A voting card"], ans:1 },
+  { id:80, topic:"review", diff:"medium", text:"Which document proclaimed fundamental rights during the French Revolution?", opts:["The Magna Carta","The Declaration of the Rights of Man and of the Citizen","The Treaty of Westphalia","The Edict of Nantes"], ans:1 },
+  { id:110, topic:"history", diff:"medium", text:"What is the significance of November 11th in France?", opts:["The national day","The armistice of World War I (1918)","The end of World War II","The French Revolution anniversary"], ans:1 },
+  { id:168, topic:"rights", diff:"medium", text:"What is the PACS in France?", opts:["A type of tax","A civil partnership contract between two adults (same or different sex)","A work permit","A health insurance"], ans:1 },
+  { id:22, topic:"institutional", diff:"medium", text:"Who is the head of state in France?", opts:["The Prime Minister","The President of the Republic","The President of the National Assembly","The Speaker of the Senate"], ans:1 },
+  { id:98, topic:"review", diff:"hard", text:"Can the French Parliament pass any law it wishes?", opts:["Yes, Parliament is supreme","No, laws must conform to the Constitution","Only if the President agrees","Only if the Senate approves"], ans:1 },
+  { id:126, topic:"history", diff:"medium", text:"What was the Commune de Paris (1871)?", opts:["A royal celebration","A revolutionary uprising and self-government in Paris","The founding of Paris","A plague epidemic"], ans:1 },
+  { id:118, topic:"history", diff:"medium", text:"What was the name of the politician who carried the law legalizing abortion?", opts:["Christiane Taubira","Simone Veil","Simone de Beauvoir","Édith Cresson"], ans:1 },
+  { id:61, topic:"rights", diff:"medium", text:"What is the role of the Défenseur des droits regarding discrimination?", opts:["It only handles employment discrimination","It receives and investigates complaints of discrimination and defends victims' rights","It only advises the government","It has no enforcement powers"], ans:1 },
+  { id:125, topic:"history", diff:"easy", text:"Who was Louis XIV known as?", opts:["The Sun King (le Roi-Soleil)","The Citizen King","Napoleon the Great","The Enlightened One"], ans:0 },
+  { id:33, topic:"institutional", diff:"medium", text:"What is the role of the Défenseur des droits in France?", opts:["To defend France in international courts","To protect citizens' rights and freedoms against public authorities","To manage immigration","To control the police"], ans:1 },
+  { id:131, topic:"history", diff:"medium", text:"What is the Panthéon in Paris used for?", opts:["It is the French Parliament","It honors great figures who contributed to France","It is the presidential palace","It is a cathedral"], ans:1 },
+  { id:84, topic:"review", diff:"medium", text:"What does equality of access to public services mean?", opts:["Only French citizens can access public services","All citizens have equal access to public services regardless of origin, religion, or social status","Public services are only available in cities","Access depends on income level"], ans:1 },
+  { id:87, topic:"review", diff:"hard", text:"Why is the separation of powers important in a democracy?", opts:["It makes government more efficient","It prevents abuse of power by distributing authority among different branches","It ensures the President has more power","It allows the military to govern in emergencies"], ans:1 },
+  { id:53, topic:"rights", diff:"medium", text:"What does French law say about corporal punishment of children?", opts:["It is allowed as a disciplinary measure","All corporal punishment of children is prohibited","Only excessive punishment is prohibited","It is allowed in private schools"], ans:1 },
+  { id:197, topic:"institutional", diff:"medium", text:"What is a referendum in France?", opts:["A court decision","A direct vote by citizens on a specific question proposed by the President","A parliamentary debate","A local election"], ans:1 },
+  { id:67, topic:"parenthood", diff:"easy", text:"What is the emergency number for child protection in France?", opts:["112","119","15","17"], ans:1 },
+  { id:95, topic:"review", diff:"easy", text:"Is school attendance mandatory in France?", opts:["No, it is optional","Yes, education is mandatory from age 3 to 16","Only from age 6 to 14","Only in urban areas"], ans:1 },
+  { id:175, topic:"rights", diff:"hard", text:"What rights does a person with a 'titre de séjour' (residence permit) have in France?", opts:["No rights at all","Rights to work, access healthcare, education, and social services depending on the type of permit","Full citizenship rights","Only the right to stay temporarily"], ans:1 },
+  { id:74, topic:"parenthood", diff:"medium", text:"Who else besides parents can play an important role in a child's upbringing?", opts:["Only teachers","Other resource persons such as grandparents, step-parents, and blended family members","Only social workers","Only medical professionals"], ans:1 },
+  { id:63, topic:"history", diff:"medium", text:"What event marked the beginning of the French Revolution?", opts:["The execution of Louis XVI","The storming of the Bastille in 1789","The signing of the Treaty of Paris","The coronation of Napoleon"], ans:1 },
+  { id:115, topic:"history", diff:"easy", text:"When was the death penalty abolished in France?", opts:["1958","1975","1981","2000"], ans:2 },
+  { id:155, topic:"principles", diff:"hard", text:"What is the difference between 'égalité en droits' and 'égalité des chances' in France?", opts:["They are the same thing","Equal rights means the same legal rights for all; equal opportunities means compensating for disadvantages to ensure fair access","One is for citizens, the other for foreigners","One applies to men, the other to women"], ans:1 },
+  { id:111, topic:"history", diff:"hard", text:"Who unified the French Resistance movements in 1943 by creating the CNR?", opts:["Charles de Gaulle","Jean Moulin","Philippe Pétain","Pierre Mendès France"], ans:1 },
+  { id:4, topic:"principles", diff:"medium", text:"What does 'Fraternity' represent in French Republican values?", opts:["Brotherhood only among family members","Solidarity and mutual support among all members of society","Religious unity among citizens","Military cooperation between nations"], ans:1 },
+  { id:150, topic:"history", diff:"medium", text:"Which French institution was created by Napoleon and still exists today?", opts:["The National Assembly","The prefectoral system and the Baccalauréat","The monarchy","The European Union"], ans:1 },
+  { id:14, topic:"principles", diff:"medium", text:"Which institution is responsible for ensuring the application of laïcité in French public schools?", opts:["The Church","The National Education Ministry","Local municipalities","Private organizations"], ans:1 },
+  { id:25, topic:"institutional", diff:"hard", text:"What is the role of the Prime Minister in France?", opts:["Head of state and commander of the armed forces","Head of government who directs the government's action","President of the National Assembly","President of the Senate"], ans:1 },
+  { id:94, topic:"review", diff:"medium", text:"How does France's membership in international organizations affect its laws?", opts:["International law has no effect on French law","France is party to international conventions that complement national law","French law always supersedes international law","Only EU law applies in France"], ans:1 },
+  { id:160, topic:"institutional", diff:"hard", text:"What is 'cohabitation' in French politics?", opts:["When the president lives with the prime minister","When the president and prime minister are from different political parties","When two parties form a coalition","When the senate and assembly disagree"], ans:1 },
+  { id:157, topic:"principles", diff:"medium", text:"Where is the motto 'Liberté, Égalité, Fraternité' typically displayed?", opts:["Only on currency","On the front of town halls, schools, and public buildings","Only on passports","Only in courtrooms"], ans:1 },
+  { id:142, topic:"history", diff:"medium", text:"What are the DOM-TOM?", opts:["French political parties","French overseas territories (Guadeloupe, Martinique, Réunion, etc.)","French military bases","Historical provinces"], ans:1 },
+  { id:191, topic:"history", diff:"easy", text:"Who was Charlemagne?", opts:["A French philosopher","A Frankish king and emperor who promoted education and unified much of Western Europe","A Roman emperor","A medieval pope"], ans:1 },
+  { id:174, topic:"rights", diff:"medium", text:"What is Pôle Emploi (now France Travail)?", opts:["A political party","The public employment service that helps job seekers find work","A social security office","A tax office"], ans:1 },
+  { id:42, topic:"rights", diff:"medium", text:"What is the principle of presumption of innocence in France?", opts:["All accused persons are considered guilty until proven innocent","All accused persons are considered innocent until proven guilty","Only French citizens benefit from this principle","It applies only to minor offenses"], ans:1 },
+  { id:15, topic:"principles", diff:"easy", text:"What does the French Republic's principle of 'indivisibility' mean?", opts:["France cannot be divided into regions","All citizens are equal before the law with no distinctions based on origin","France has only one official language","The government cannot be divided into branches"], ans:1 }
+]
+];
+
+const sections = [
+  { key:"principles",   label:"Principles & Values",     icon:"🏛️" },
+  { key:"institutional", label:"Institutional System",    icon:"⚖️" },
+  { key:"rights",       label:"Rights & Duties",          icon:"📜" },
+  { key:"history",      label:"History, Geography & Culture", icon:"🗺️" },
+  { key:"parenthood",   label:"Parenthood",               icon:"👨‍👩‍👧" },
+  { key:"review",       label:"Comprehensive Review",     icon:"🔄" },
+];
+
+let currentTest = 0;
+let answered = {};
+let currentTopic = "all";
+let currentDiff = "all";
+
+function getQuestions() { return allTests[currentTest]; }
+
+function switchTest(idx) {
+  currentTest = idx;
+  answered = {};
+  currentTopic = "all";
+  currentDiff = "all";
+  document.getElementById("diff-filter").value = "all";
+  document.querySelectorAll(".test-btn").forEach((b, i) => b.classList.toggle("active", i === idx));
+  buildQuiz();
+  updateScore();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function buildQuiz() {
+  const container = document.getElementById("quiz-container");
+  container.innerHTML = "";
+  const questions = getQuestions();
+
+  // Build tabs
+  const tabsDiv = document.getElementById("tabs");
+  tabsDiv.innerHTML = "";
+  const allBtn = document.createElement("button");
+  allBtn.className = "tab-btn" + (currentTopic === "all" ? " active" : "");
+  allBtn.textContent = "📋 All";
+  allBtn.onclick = () => { currentTopic = "all"; buildQuiz(); };
+  tabsDiv.appendChild(allBtn);
+
+  const topicsInTest = [...new Set(questions.map(q => q.topic))];
+  sections.forEach(sec => {
+    if (!topicsInTest.includes(sec.key)) return;
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (currentTopic === sec.key ? " active" : "");
+    btn.textContent = sec.icon + " " + sec.label;
+    btn.onclick = () => { currentTopic = sec.key; buildQuiz(); };
+    tabsDiv.appendChild(btn);
+  });
+
+  // Filter
+  const filtered = questions.filter(q =>
+    (currentTopic === "all" || q.topic === currentTopic) &&
+    (currentDiff === "all" || q.diff === currentDiff)
+  );
+
+  document.getElementById("sc-total").textContent = questions.length;
+
+  // Group by topic
+  const grouped = {};
+  filtered.forEach(q => {
+    if (!grouped[q.topic]) grouped[q.topic] = [];
+    grouped[q.topic].push(q);
+  });
+
+  const order = sections.map(s => s.key);
+  order.forEach(topic => {
+    const qs = grouped[topic];
+    if (!qs) return;
+    const sec = sections.find(s => s.key === topic);
+
+    const title = document.createElement("div");
+    title.className = "section-title";
+    title.innerHTML = sec.icon + " " + sec.label + ' <span style="font-size:.8rem;font-weight:400;color:#6b7280">(' + qs.length + ' questions)</span>';
+    container.appendChild(title);
+
+    qs.forEach((q, idx) => {
+      const card = document.createElement("div");
+      card.className = "q-card";
+      card.id = "q-" + q.id;
+
+      const state = answered[q.id];
+      if (state) card.classList.add(state.correct ? "correct-card" : "wrong-card");
+
+      card.innerHTML = '<div class="q-header">' +
+        '<span class="q-num">Q' + q.id + '</span>' +
+        '<span class="q-diff ' + q.diff + '">' + q.diff + '</span></div>' +
+        '<div class="q-text">' + q.text + '</div>' +
+        '<div class="opts">' + q.opts.map((o, oi) => {
+          let cls = "opt-btn";
+          if (state) {
+            cls += " locked";
+            if (oi === q.ans) cls += " show-correct";
+            if (oi === state.chosen && !state.correct) cls += " selected-wrong";
+            if (oi === state.chosen && state.correct) cls += " selected-correct";
+          }
+          return '<button class="' + cls + '" onclick="answer(' + q.id + ',' + oi + ')">' +
+            String.fromCharCode(65 + oi) + ') ' + o + '</button>';
+        }).join("") + '</div>';
+
+      if (state) {
+        const exp = document.createElement("div");
+        exp.className = "explanation " + (state.correct ? "correct-exp" : "wrong-exp");
+        exp.textContent = state.correct
+          ? "✅ Correct!"
+          : "❌ Wrong. The correct answer is: " + String.fromCharCode(65 + q.ans) + ") " + q.opts[q.ans];
+        card.appendChild(exp);
+      }
+
+      container.appendChild(card);
+    });
+  });
+}
+
+function answer(qid, chosen) {
+  if (answered[qid]) return;
+  const q = getQuestions().find(x => x.id === qid);
+  if (!q) return;
+  answered[qid] = { chosen, correct: chosen === q.ans };
+  buildQuiz();
+  updateScore();
+
+  // Check if all answered
+  if (Object.keys(answered).length === getQuestions().length) {
+    showResult();
+  }
+}
+
+function updateScore() {
+  const qs = getQuestions();
+  const total = qs.length;
+  const ans = Object.values(answered);
+  const correct = ans.filter(a => a.correct).length;
+  const wrong = ans.filter(a => !a.correct).length;
+  const pct = ans.length ? Math.round(correct / ans.length * 100) : 0;
+
+  document.getElementById("sc-correct").textContent = correct;
+  document.getElementById("sc-wrong").textContent = wrong;
+  document.getElementById("sc-answered").textContent = ans.length;
+  document.getElementById("sc-total").textContent = total;
+  document.getElementById("sc-pct").textContent = pct + "%";
+  document.getElementById("progress-bar").style.width = (ans.length / total * 100) + "%";
+}
+
+function showResult() {
+  const qs = getQuestions();
+  const ans = Object.values(answered);
+  const correct = ans.filter(a => a.correct).length;
+  const pct = Math.round(correct / qs.length * 100);
+
+  document.getElementById("res-score").textContent = correct + " / " + qs.length;
+  document.getElementById("res-label").textContent = pct + "% correct";
+
+  const gradeEl = document.getElementById("res-grade");
+  if (pct >= 80) { gradeEl.textContent = "🎉 Excellent!"; gradeEl.className = "grade pass"; }
+  else if (pct >= 60) { gradeEl.textContent = "👍 Good — keep practicing!"; gradeEl.className = "grade pass"; }
+  else { gradeEl.textContent = "📚 Keep studying — you can do it!"; gradeEl.className = "grade fail"; }
+
+  document.getElementById("result-overlay").classList.add("show");
+}
+
+function filterQuiz() {
+  currentDiff = document.getElementById("diff-filter").value;
+  buildQuiz();
+}
+
+function resetTest() {
+  answered = {};
+  buildQuiz();
+  updateScore();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Init
+buildQuiz();
+updateScore();
+</script>
+
+</body>
+</html>
