@@ -1,0 +1,9 @@
+{
+  "data": {
+    "http_error": "401 Client Error: Unauthorized for url: https://api.github.com/repos/procourses/web/git/trees/main?recursive=1",
+    "message": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+    "status_code": 401
+  },
+  "error": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+  "successful": false
+}

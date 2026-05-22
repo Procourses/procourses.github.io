@@ -1,0 +1,9 @@
+{
+  "data": {
+    "http_error": "401 Client Error: Unauthorized for url: https://api.github.com/user/repos?type=all&sort=full_name&per_page=100&page=1",
+    "message": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+    "status_code": 401
+  },
+  "error": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+  "successful": false
+}

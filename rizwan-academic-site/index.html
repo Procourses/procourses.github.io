@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prof. Rizwan Mushtaq | Academic Research & Collaboration</title>
+  <meta name="description" content="Academic profile of Rizwan Mushtaq – Associate Professor at EDC Paris Business School. Research in Corporate Governance, CSR, Financial Markets, and AI in Finance." />
+  <meta property="og:title" content="Prof. Rizwan Mushtaq | EDC Paris Business School" />
+  <meta property="og:description" content="Research, Teaching, and Collaboration – Corporate Governance, CSR, Financial Inclusion, AI & ML in Finance." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+          colors: {
+            navy: { 50:'#eff6ff', 100:'#dbeafe', 500:'#1e40af', 600:'#1d3a8a', 700:'#1e3a8a', 800:'#1e2e6e', 900:'#0f1f4d' },
+            gold: { 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .nav-tab.active { color: #1e40af; border-bottom: 3px solid #1e40af; }
+    .pub-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .pub-card { transition: all 0.3s ease; }
+    .hero-gradient { background: linear-gradient(135deg, #0f1f4d 0%, #1e40af 50%, #1d3a8a 100%); }
+    .stat-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+    .section-divider { width: 60px; height: 4px; background: linear-gradient(90deg, #1e40af, #f59e0b); border-radius: 2px; }
+    .collab-card:hover { transform: translateY(-4px); }
+    .collab-card { transition: all 0.3s ease; }
+    .keyword-badge { background: linear-gradient(135deg, #dbeafe, #eff6ff); color: #1e40af; }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .animate-fade-in { animation: fadeInUp 0.6s ease forwards; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .citation-count { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full hero-gradient flex items-center justify-center text-white font-bold text-sm">RM</div>
+        <span class="font-semibold text-navy-900 text-sm sm:text-base">Prof. Rizwan Mushtaq</span>
+      </div>
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        <button onclick="showTab('home')" class="nav-tab active px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-home">Home</button>
+        <button onclick="showTab('research')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-research">Research</button>
+        <button onclick="showTab('publications')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-publications">Publications</button>
+        <button onclick="showTab('teaching')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-teaching">Teaching</button>
+        <button onclick="showTab('courses')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-courses">PRO Courses</button>
+        <button onclick="showTab('collaboration')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-collaboration">Collaboration</button>
+        <button onclick="showTab('contact')" class="nav-tab px-4 py-5 text-sm font-medium text-gray-600 hover:text-navy-500 border-b-3 border-transparent transition-all" id="tab-contact">Contact</button>
+      </div>
+      <!-- Mobile menu button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile Nav -->
+    <div id="mobileMenu" class="mobile-menu md:hidden flex-col pb-4 gap-1">
+      <button onclick="showTab('home');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">🏠 Home</button>
+      <button onclick="showTab('research');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">🔬 Research</button>
+      <button onclick="showTab('publications');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">📄 Publications</button>
+      <button onclick="showTab('teaching');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">🎓 Teaching</button>
+      <button onclick="showTab('courses');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">💻 PRO Courses</button>
+      <button onclick="showTab('collaboration');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">🤝 Collaboration</button>
+      <button onclick="showTab('contact');toggleMobileMenu()" class="w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 rounded-lg">✉️ Contact</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HOME TAB ===== -->
+<div id="content-home" class="tab-content active">
+  <!-- Hero -->
+  <section class="hero-gradient text-white py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="flex-shrink-0">
+          <div class="w-44 h-44 rounded-full border-4 border-white/30 overflow-hidden shadow-2xl">
+            <img src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=Cb3FEiAAAAAJ&citpid=1" alt="Prof. Rizwan Mushtaq" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Rizwan+Mushtaq&size=176&background=1e40af&color=fff&bold=true'" />
+          </div>
+        </div>
+        <div class="text-center lg:text-left">
+          <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Associate Professor</p>
+          <h1 class="font-serif text-4xl lg:text-5xl font-bold mb-3">Rizwan Mushtaq</h1>
+          <p class="text-blue-100 text-xl mb-2">EDC Paris Business School</p>
+          <p class="text-blue-200 text-sm mb-6">PhD in Financial Economics · University of Paris I: Panthéon-Sorbonne</p>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+            <span class="bg-white/20 backdrop-blur text-white text-xs px-3 py-1 rounded-full border border-white/30">Corporate Governance</span>
+            <span class="bg-white/20 backdrop-blur text-white text-xs px-3 py-1 rounded-full border border-white/30">CSR & Sustainability</span>
+            <span class="bg-white/20 backdrop-blur text-white text-xs px-3 py-1 rounded-full border border-white/30">Financial Markets</span>
+            <span class="bg-white/20 backdrop-blur text-white text-xs px-3 py-1 rounded-full border border-white/30">Financial Inclusion</span>
+            <span class="bg-white/20 backdrop-blur text-white text-xs px-3 py-1 rounded-full border border-white/30">AI & ML in Finance</span>
+          </div>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+            <a href="https://scholar.google.com/citations?user=Cb3FEiAAAAAJ&hl=en" target="_blank" class="bg-white text-navy-800 px-5 py-2 rounded-lg font-semibold text-sm hover:bg-blue-50 transition flex items-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+              Google Scholar
+            </a>
+            <a href="https://www.linkedin.com/in/rizwan-mushtaq/" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition flex items-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <button onclick="showTab('contact')" class="border border-white/50 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-white/10 transition">
+              Get in Touch
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-navy-900 text-white py-10 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-4xl font-bold text-gold-400">1,792</div>
+          <div class="text-blue-200 text-sm mt-1">Total Citations</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-gold-400">12</div>
+          <div class="text-blue-200 text-sm mt-1">h-index</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-gold-400">14</div>
+          <div class="text-blue-200 text-sm mt-1">i10-index</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-gold-400">20+</div>
+          <div class="text-blue-200 text-sm mt-1">Publications</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2">About</p>
+          <h2 class="font-serif text-3xl font-bold text-gray-900 mb-4">Academic Profile</h2>
+          <div class="section-divider mb-6"></div>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Rizwan Mushtaq is an Associate Professor of Finance and Data Science at <strong>EDC Paris Business School</strong>. He earned his PhD in Financial Economics from the University of Paris I: Panthéon-Sorbonne. He also holds an MS in Banking & Finance.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            His research focuses on <strong>Corporate Social Responsibility (CSR)</strong>, sustainable finance and governance, financial inclusion, and the applications of <strong>AI and machine learning in finance and economics</strong>. He is responsible for the Data Science & Business Intelligence specialisation within the Grande École Programme.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Prof. Mushtaq has published extensively in leading international journals including the <em>Journal of Business Ethics</em>, <em>Journal of Business Research</em>, <em>International Journal of Finance & Economics</em>, <em>Review of Quantitative Finance & Accounting</em>, and <em>Applied Economics</em>.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">CSR Disclosure</span>
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">Firm Innovation</span>
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">Board Composition</span>
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">AI & ML in Finance</span>
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">Financial Inclusion</span>
+            <span class="keyword-badge text-xs px-3 py-1 rounded-full font-medium">Access to Finance</span>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <!-- Affiliations -->
+          <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              Affiliation & Roles
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <p class="font-medium text-gray-800 text-sm">Associate Professor – Finance & Data Science</p>
+                  <p class="text-gray-500 text-xs">EDC Paris Business School</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <p class="font-medium text-gray-800 text-sm">Head – MSc Data Science & Business Analytics</p>
+                  <p class="text-gray-500 text-xs">EDC Paris Business School</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <p class="font-medium text-gray-800 text-sm">Department of Management & Strategy</p>
+                  <p class="text-gray-500 text-xs">EDC Paris Business School</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Education -->
+          <div class="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+              Education
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <p class="font-medium text-gray-800 text-sm">PhD in Financial Economics</p>
+                  <p class="text-gray-500 text-xs">University of Paris I: Panthéon-Sorbonne</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <p class="font-medium text-gray-800 text-sm">MS in Banking & Finance</p>
+                  <p class="text-gray-500 text-xs">Specialisation in Finance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Highlights -->
+  <section class="py-14 px-4 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2">Latest Work</p>
+        <h2 class="font-serif text-3xl font-bold text-gray-900">Recent Highlights</h2>
+        <div class="section-divider mx-auto mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 pub-card">
+          <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <span class="text-xs text-blue-600 font-medium">2025 · Asia Pacific Journal of Management</span>
+          <h3 class="font-semibold text-gray-900 mt-2 mb-2 text-sm leading-snug">Are born global firms environmentally more responsible? Evidence from the East Asia and Pacific region</h3>
+          <p class="text-gray-500 text-xs">Mushtaq, R., Murtaza, G., Yahiaoui, D., Vijay, P., & Talpur, Q. A.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 pub-card">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-xs text-green-600 font-medium">2024 · Journal of Business Research</span>
+          <h3 class="font-semibold text-gray-900 mt-2 mb-2 text-sm leading-snug">Financial literacy, confidence and well-being: The mediating role of financial behavior</h3>
+          <p class="text-gray-500 text-xs">Sajid, M., Mushtaq, R., Murtaza, G., Yahiaoui, D., & Pereira, V. · 95 citations</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 pub-card">
+          <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <span class="text-xs text-purple-600 font-medium">2024 · Energy Policy</span>
+          <h3 class="font-semibold text-gray-900 mt-2 mb-2 text-sm leading-snug">Impact of liquidity conditions on the time-varying link between US municipal green bonds and major risky markets: A machine learning approach</h3>
+          <p class="text-gray-500 text-xs">Kocaarslan, B., & Mushtaq, R. · 11 citations</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <button onclick="showTab('publications')" class="bg-navy-900 text-white px-6 py-3 rounded-xl font-medium text-sm hover:bg-navy-800 transition">View All Publications →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== RESEARCH TAB ===== -->
+<div id="content-research" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Academic Research</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">Research Overview</h1>
+      <p class="text-blue-100 max-w-2xl">Advancing knowledge at the intersection of corporate governance, sustainability, financial inclusion, and artificial intelligence in finance.</p>
+    </div>
+  </div>
+
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <!-- Research Areas -->
+      <div class="text-center mb-12">
+        <p class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2">Focus Areas</p>
+        <h2 class="font-serif text-3xl font-bold text-gray-900">Research Themes</h2>
+        <div class="section-divider mx-auto mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Corporate Governance</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Board composition, CEO power, gender diversity, and their impact on firm behaviour, environmental decoupling, and CSR reporting.</p>
+        </div>
+        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
+          <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">CSR & Sustainability</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">CSR disclosure, environmental performance, sustainability committees, and the link between ESG practices and financial outcomes.</p>
+        </div>
+        <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 border border-amber-200">
+          <div class="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Financial Inclusion & ICT</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Microfinance, ICT adoption, SME access to finance, financial inclusion's impact on poverty reduction and economic growth.</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-200">
+          <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">AI & ML in Finance</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Machine learning applications in financial markets, NLP for 10-K text sentiment analysis, AI-driven predictions in finance.</p>
+        </div>
+      </div>
+
+      <!-- Featured Research -->
+      <div class="mb-12">
+        <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Featured Research Projects</h2>
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm pub-card">
+            <div class="flex items-start justify-between mb-3">
+              <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full font-medium">Highly Cited · 623 citations</span>
+              <span class="text-gray-400 text-xs">2019</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Microfinance, Financial Inclusion and ICT</h3>
+            <p class="text-gray-600 text-sm mb-3">Implications for poverty and inequality — explores how ICT-enabled microfinance can drive financial inclusion and reduce socio-economic inequality.</p>
+            <p class="text-gray-500 text-xs">Technology in Society, 59, 101154</p>
+            <p class="text-gray-500 text-xs mt-1">R Mushtaq, C Bruneau</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm pub-card">
+            <div class="flex items-start justify-between mb-3">
+              <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Highly Cited · 147 citations</span>
+              <span class="text-gray-400 text-xs">2022</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">ICT Adoption, Innovation, and SMEs' Access to Finance</h3>
+            <p class="text-gray-600 text-sm mb-3">Investigates how ICT adoption and innovation activities jointly affect SMEs' ability to access external finance in emerging economies.</p>
+            <p class="text-gray-500 text-xs">Telecommunications Policy, 46(3), 102275</p>
+            <p class="text-gray-500 text-xs mt-1">R Mushtaq, AA Gull, M Usman</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm pub-card">
+            <div class="flex items-start justify-between mb-3">
+              <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">AI in Finance · 33 citations</span>
+              <span class="text-gray-400 text-xs">2022</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Do Financial Performance Indicators Predict 10-K Text Sentiments?</h3>
+            <p class="text-gray-600 text-sm mb-3">An application of artificial intelligence to predict whether financial indicators can forecast the sentiment of annual reports (10-K filings).</p>
+            <p class="text-gray-500 text-xs">Research in International Business and Finance, 61, 101679</p>
+            <p class="text-gray-500 text-xs mt-1">R Mushtaq, AA Gull, Y Shahab, I Derouiche</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm pub-card">
+            <div class="flex items-start justify-between mb-3">
+              <span class="bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full font-medium">CEO Power · 120 citations</span>
+              <span class="text-gray-400 text-xs">2023</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">The Power of the CEO and Environmental Decoupling</h3>
+            <p class="text-gray-600 text-sm mb-3">Examines how CEO power influences the gap between a firm's stated environmental commitments and its actual environmental performance.</p>
+            <p class="text-gray-500 text-xs">Business Strategy and the Environment, 2023</p>
+            <p class="text-gray-500 text-xs mt-1">AA Gull, N Hussain, SA Khan, R Mushtaq, R Orij</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co-Authors -->
+      <div>
+        <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Research Collaborators</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2 text-blue-600 font-bold text-sm">GM</div>
+            <p class="font-medium text-gray-800 text-sm">Dr. Ghulam Murtaza</p>
+            <p class="text-gray-500 text-xs mt-1">KEDGE Business School, France</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 text-green-600 font-bold text-sm">MA</div>
+            <p class="font-medium text-gray-800 text-sm">Muhammad Abbas</p>
+            <p class="text-gray-500 text-xs mt-1">FAST School of Management, Pakistan</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2 text-purple-600 font-bold text-sm">UR</div>
+            <p class="font-medium text-gray-800 text-sm">Usman Raja</p>
+            <p class="text-gray-500 text-xs mt-1">Brock University, Canada</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-2 text-amber-600 font-bold text-sm">AG</div>
+            <p class="font-medium text-gray-800 text-sm">Ammar Ali Gull</p>
+            <p class="text-gray-500 text-xs mt-1">EMLV – École de Management, France</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2 text-red-600 font-bold text-sm">YS</div>
+            <p class="font-medium text-gray-800 text-sm">Yasir Shahab</p>
+            <p class="text-gray-500 text-xs mt-1">Xijing University, China</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-2 text-teal-600 font-bold text-sm">TA</div>
+            <p class="font-medium text-gray-800 text-sm">Tanveer Ahsan</p>
+            <p class="text-gray-500 text-xs mt-1">Rennes School of Business, France</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2 text-indigo-600 font-bold text-sm">RO</div>
+            <p class="font-medium text-gray-800 text-sm">René Orij</p>
+            <p class="text-gray-500 text-xs mt-1">Nyenrode Business University</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center border border-gray-100 collab-card">
+            <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-2 text-pink-600 font-bold text-sm">ID</div>
+            <p class="font-medium text-gray-800 text-sm">Imen Derouiche</p>
+            <p class="text-gray-500 text-xs mt-1">University of Luxembourg</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PUBLICATIONS TAB ===== -->
+<div id="content-publications" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Scholarly Output</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">Publications</h1>
+      <p class="text-blue-100">Peer-reviewed articles in leading international journals · 1,792 total citations · h-index: 12</p>
+    </div>
+  </div>
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button onclick="filterPubs('all')" class="pub-filter active-filter bg-navy-900 text-white px-4 py-2 rounded-lg text-sm font-medium transition" id="filter-all">All</button>
+        <button onclick="filterPubs('governance')" class="pub-filter bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition">Corporate Governance</button>
+        <button onclick="filterPubs('csr')" class="pub-filter bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition">CSR & Sustainability</button>
+        <button onclick="filterPubs('finance')" class="pub-filter bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition">Financial Inclusion</button>
+        <button onclick="filterPubs('ai')" class="pub-filter bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition">AI & Markets</button>
+      </div>
+
+      <div id="pub-list" class="space-y-4">
+        <!-- Publications injected by JS -->
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="https://scholar.google.com/citations?user=Cb3FEiAAAAAJ&hl=en" target="_blank" class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 px-6 py-3 rounded-xl font-medium text-sm hover:bg-blue-100 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          View Full Profile on Google Scholar
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== TEACHING TAB ===== -->
+<div id="content-teaching" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Education</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">Teaching</h1>
+      <p class="text-blue-100 max-w-2xl">Courses taught at EDC Paris Business School spanning Finance, Data Science, and Business Analytics at undergraduate and postgraduate levels.</p>
+    </div>
+  </div>
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Left: Courses -->
+        <div class="lg:col-span-2">
+          <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Courses Taught</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-10">
+            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 pub-card">
+              <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Financial Risk Management</h3>
+              <p class="text-gray-500 text-sm">Risk identification, measurement, and mitigation strategies in financial institutions.</p>
+              <span class="mt-3 inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Grande École / MSc</span>
+            </div>
+            <div class="bg-green-50 border border-green-100 rounded-2xl p-5 pub-card">
+              <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Portfolio Management</h3>
+              <p class="text-gray-500 text-sm">Modern portfolio theory, asset allocation, and performance evaluation.</p>
+              <span class="mt-3 inline-block text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Grande École / MSc</span>
+            </div>
+            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5 pub-card">
+              <div class="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Financial Markets</h3>
+              <p class="text-gray-500 text-sm">Equity, debt, and derivative markets; market microstructure and efficiency.</p>
+              <span class="mt-3 inline-block text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded-full">Bachelor / MSc</span>
+            </div>
+            <div class="bg-purple-50 border border-purple-100 rounded-2xl p-5 pub-card">
+              <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Corporate Finance</h3>
+              <p class="text-gray-500 text-sm">Capital structure, valuation, investment decisions, and dividend policy.</p>
+              <span class="mt-3 inline-block text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Bachelor / MSc</span>
+            </div>
+            <div class="bg-teal-50 border border-teal-100 rounded-2xl p-5 pub-card sm:col-span-2">
+              <div class="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Data Analytics Tools</h3>
+              <p class="text-gray-500 text-sm">Practical data analysis using Python, R, and statistical software for business decision-making. Covers data wrangling, visualisation, and predictive modelling.</p>
+              <span class="mt-3 inline-block text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full">MSc Data Science & Business Analytics</span>
+            </div>
+          </div>
+
+          <!-- Programme Responsibility -->
+          <div class="bg-gradient-to-br from-navy-900 to-blue-800 text-white rounded-2xl p-6">
+            <h3 class="font-bold text-lg mb-2">Programme Responsibility</h3>
+            <p class="text-blue-100 text-sm mb-4">Head of the MSc Data Science & Business Analytics programme at EDC Paris Business School, responsible for curriculum development, faculty coordination, and student mentoring.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Curriculum Design</span>
+              <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Student Mentoring</span>
+              <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Industry Partnerships</span>
+              <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Research Supervision</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Teaching Philosophy & Info -->
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <h3 class="font-bold text-gray-900 mb-3">Teaching Philosophy</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Bridging rigorous academic theory with real-world financial practice. Emphasis on quantitative methods, data-driven decision making, and critical thinking in finance and business analytics.</p>
+          </div>
+          <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+            <h3 class="font-bold text-gray-900 mb-4">Institution</h3>
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://www.edcparis.edu/sites/edcparis.edu/themes/custom/sbx_theme/logo.webp" alt="EDC Paris" class="h-8 object-contain" onerror="this.style.display='none'" />
+            </div>
+            <p class="font-semibold text-gray-800 text-sm">EDC Paris Business School</p>
+            <p class="text-gray-500 text-xs mt-1">École des Dirigeants et Créateurs d'Entreprises</p>
+            <a href="https://www.edcparis.edu/fr/corps-professoral/mushtaq-rizwan" target="_blank" class="mt-3 inline-block text-blue-600 text-xs hover:underline">View Faculty Profile →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-gray-200">
+            <h3 class="font-bold text-gray-900 mb-3">Specialisation</h3>
+            <p class="text-gray-600 text-sm">Data Science & Business Intelligence track within the Grande École Programme — preparing students for data-driven careers in finance and management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PRO COURSES TAB ===== -->
+<div id="content-courses" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Online Learning</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">PRO Courses</h1>
+      <p class="text-blue-100 max-w-2xl">Curated resources for online learning, study abroad guidance, career counselling, and professional development — never stop learning.</p>
+    </div>
+  </div>
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <!-- Intro -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12 border border-blue-100">
+        <div class="flex flex-col md:flex-row items-start gap-6">
+          <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-gray-900 mb-2">Welcome to PRO Courses</h2>
+            <p class="text-gray-600 leading-relaxed">A platform dedicated to helping learners navigate online education, study abroad opportunities, and career development. Get expert guidance, curated course recommendations, and personalised career counselling.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Partners -->
+      <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Leading Online Learning Platforms</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+        <a href="https://www.edx.org" target="_blank" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm collab-card text-center group">
+          <div class="w-16 h-16 bg-red-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-black text-red-600">edX</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">edX</h3>
+          <p class="text-gray-500 text-sm">The trusted platform for education and learning. Founded by Harvard and MIT.</p>
+          <span class="mt-3 inline-block text-red-600 text-xs group-hover:underline">Explore courses →</span>
+        </a>
+        <a href="https://www.udacity.com" target="_blank" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm collab-card text-center group">
+          <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-lg font-black text-blue-600">Udacity</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Udacity</h3>
+          <p class="text-gray-500 text-sm">Where lifelong learners come to learn skills they need, to land the jobs they want.</p>
+          <span class="mt-3 inline-block text-blue-600 text-xs group-hover:underline">Explore courses →</span>
+        </a>
+        <a href="https://about.coursera.org" target="_blank" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm collab-card text-center group">
+          <div class="w-16 h-16 bg-indigo-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-lg font-black text-indigo-600">Coursera</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Coursera</h3>
+          <p class="text-gray-500 text-sm">Anyone, anywhere has the power to transform their life through learning.</p>
+          <span class="mt-3 inline-block text-indigo-600 text-xs group-hover:underline">Explore courses →</span>
+        </a>
+        <a href="https://www.datacamp.com" target="_blank" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm collab-card text-center group">
+          <div class="w-16 h-16 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-lg font-black text-green-600">DataCamp</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">DataCamp</h3>
+          <p class="text-gray-500 text-sm">Learn data science, Python, R, SQL, and more with hands-on practice.</p>
+          <span class="mt-3 inline-block text-green-600 text-xs group-hover:underline">Explore courses →</span>
+        </a>
+      </div>
+
+      <!-- Recommended Topics -->
+      <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Recommended Learning Paths</h2>
+      <div class="grid md:grid-cols-3 gap-6 mb-14">
+        <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">📊</div>
+          <h3 class="font-bold text-lg mb-2">Data Science & Analytics</h3>
+          <p class="text-blue-100 text-sm mb-4">Python, R, Machine Learning, Deep Learning, NLP, Data Visualisation</p>
+          <ul class="text-blue-200 text-xs space-y-1">
+            <li>• Python for Data Science (Coursera)</li>
+            <li>• Machine Learning Specialization (Coursera)</li>
+            <li>• Data Analyst (DataCamp)</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-green-600 to-green-800 text-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">💹</div>
+          <h3 class="font-bold text-lg mb-2">Finance & Investment</h3>
+          <p class="text-green-100 text-sm mb-4">Corporate Finance, Portfolio Management, Financial Modelling, Risk</p>
+          <ul class="text-green-200 text-xs space-y-1">
+            <li>• Financial Markets (Coursera / Yale)</li>
+            <li>• Corporate Finance Essentials (edX)</li>
+            <li>• CFA Prep Courses (Udacity)</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-2xl p-6">
+          <div class="text-3xl mb-3">🌍</div>
+          <h3 class="font-bold text-lg mb-2">Study Abroad Guidance</h3>
+          <p class="text-purple-100 text-sm mb-4">France, Europe, Top Business Schools, Scholarships, Applications</p>
+          <ul class="text-purple-200 text-xs space-y-1">
+            <li>• Grande École Programme (France)</li>
+            <li>• European MSc Programmes</li>
+            <li>• Scholarship Opportunities</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Career Counselling CTA -->
+      <div class="bg-gray-900 text-white rounded-2xl p-8 text-center">
+        <div class="text-4xl mb-4">🎯</div>
+        <h2 class="font-serif text-2xl font-bold mb-3">Need Personalised Career Counselling?</h2>
+        <p class="text-gray-300 mb-6 max-w-xl mx-auto">Get expert guidance on course selection, study abroad applications, career planning, and academic development from Prof. Rizwan Mushtaq.</p>
+        <button onclick="showTab('contact')" class="bg-white text-gray-900 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition">Get in Touch →</button>
+      </div>
+
+      <!-- Civic Exam -->
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-1">🇫🇷 French Civic Exam Quiz</h3>
+          <p class="text-gray-600 text-sm">Practice for the French civic integration exam with our interactive quiz.</p>
+        </div>
+        <a href="https://procourses.github.io/web/html/Formation.html" target="_blank" class="bg-amber-500 text-white px-6 py-2 rounded-lg font-medium text-sm hover:bg-amber-600 transition flex-shrink-0">Take the Quiz →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== COLLABORATION TAB ===== -->
+<div id="content-collaboration" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Academic Collaboration</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">Research Collaboration</h1>
+      <p class="text-blue-100 max-w-2xl">Open to joint research projects, co-authorship, PhD supervision, and academic partnerships in the areas of Corporate Governance, CSR, Financial Inclusion, and AI in Finance.</p>
+    </div>
+  </div>
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Collaboration Opportunities</h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 bg-blue-50 rounded-2xl p-5 border border-blue-100">
+              <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Joint Research Projects</h3>
+                <p class="text-gray-600 text-sm">Co-authorship on empirical studies in corporate governance, ESG, financial markets, and AI applications in finance.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-green-50 rounded-2xl p-5 border border-green-100">
+              <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">PhD & Thesis Supervision</h3>
+                <p class="text-gray-600 text-sm">Supervision of doctoral and master's theses in finance, data science, and business analytics. Open to international students.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-purple-50 rounded-2xl p-5 border border-purple-100">
+              <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">International Academic Partnerships</h3>
+                <p class="text-gray-600 text-sm">Partnerships with universities and research institutes globally for exchange programmes, joint seminars, and research initiatives.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-amber-50 rounded-2xl p-5 border border-amber-100">
+              <div class="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Industry & Consultancy</h3>
+                <p class="text-gray-600 text-sm">Consulting engagements with financial institutions and corporations on ESG strategy, data analytics, and financial risk management.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Research Network</h2>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 mb-6">
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Prof. Mushtaq maintains active collaborations with researchers across France, Pakistan, Canada, China, Luxembourg, and the Netherlands. His international co-author network spans over 13 researchers at leading institutions worldwide.</p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="flex items-center gap-2 text-gray-600"><span class="text-blue-500">🇫🇷</span> France (EDC, KEDGE, Rennes, EMLV)</div>
+              <div class="flex items-center gap-2 text-gray-600"><span>🇵🇰</span> Pakistan (NUCES, IIUI)</div>
+              <div class="flex items-center gap-2 text-gray-600"><span>🇨🇦</span> Canada (Brock University)</div>
+              <div class="flex items-center gap-2 text-gray-600"><span>🇨🇳</span> China (Xijing University)</div>
+              <div class="flex items-center gap-2 text-gray-600"><span>🇱🇺</span> Luxembourg (Uni. Luxembourg)</div>
+              <div class="flex items-center gap-2 text-gray-600"><span>🇳🇱</span> Netherlands (Nyenrode)</div>
+            </div>
+          </div>
+
+          <!-- Call to Action -->
+          <div class="bg-gradient-to-br from-navy-900 to-blue-800 text-white rounded-2xl p-6">
+            <h3 class="font-bold text-lg mb-2">Interested in Collaborating?</h3>
+            <p class="text-blue-100 text-sm mb-4">Whether you're a researcher, PhD student, or industry professional, reach out to discuss potential collaboration opportunities.</p>
+            <button onclick="showTab('contact')" class="bg-white text-navy-900 px-5 py-2 rounded-lg font-semibold text-sm hover:bg-blue-50 transition">Send a Message →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== CONTACT TAB ===== -->
+<div id="content-contact" class="tab-content">
+  <div class="hero-gradient text-white py-14 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-2">Get in Touch</p>
+      <h1 class="font-serif text-4xl font-bold mb-3">Contact</h1>
+      <p class="text-blue-100 max-w-2xl">For research collaborations, course enquiries, career counselling, or academic partnerships — reach out directly.</p>
+    </div>
+  </div>
+  <section class="py-14 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Contact Info -->
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-800">Email</p>
+                <a href="mailto:rizwan.mushtaq@edcparis.edu" class="text-blue-600 text-sm hover:underline">rizwan.mushtaq@edcparis.edu</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-800">Institution</p>
+                <p class="text-gray-600 text-sm">EDC Paris Business School</p>
+                <p class="text-gray-500 text-xs">Department of Management & Strategy</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-purple-600" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-800">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/rizwan-mushtaq/" target="_blank" class="text-purple-600 text-sm hover:underline">linkedin.com/in/rizwan-mushtaq</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-amber-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-800">Google Scholar</p>
+                <a href="https://scholar.google.com/citations?user=Cb3FEiAAAAAJ&hl=en" target="_blank" class="text-amber-600 text-sm hover:underline">View Research Profile</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-800">Faculty Page</p>
+                <a href="https://www.edcparis.edu/fr/corps-professoral/mushtaq-rizwan" target="_blank" class="text-red-600 text-sm hover:underline">EDC Paris Faculty Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input type="text" required placeholder="Your full name" class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" required placeholder="your.email@example.com" class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+              <select class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option>Research Collaboration</option>
+                <option>PhD / Thesis Supervision</option>
+                <option>Career Counselling</option>
+                <option>Course Enquiry</option>
+                <option>Speaking / Conference</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea rows="5" required placeholder="Describe your enquiry or collaboration idea..." class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-navy-900 text-white py-3 rounded-xl font-semibold text-sm hover:bg-blue-800 transition" style="background:#0f1f4d">Send Message</button>
+          </form>
+          <div id="form-success" class="hidden mt-4 bg-green-50 border border-green-200 rounded-xl p-4 text-green-700 text-sm text-center">
+            ✅ Thank you! Your message has been sent. Prof. Mushtaq will get back to you soon.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-gray-900 text-white py-10 px-4 mt-0">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full hero-gradient flex items-center justify-center text-white font-bold text-sm">RM</div>
+          <span class="font-semibold">Prof. Rizwan Mushtaq</span>
+        </div>
+        <p class="text-gray-400 text-sm">Associate Professor of Finance & Data Science · EDC Paris Business School</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3 text-sm">Quick Links</h4>
+        <div class="space-y-2">
+          <button onclick="showTab('research')" class="block text-gray-400 text-sm hover:text-white transition">Research</button>
+          <button onclick="showTab('publications')" class="block text-gray-400 text-sm hover:text-white transition">Publications</button>
+          <button onclick="showTab('teaching')" class="block text-gray-400 text-sm hover:text-white transition">Teaching</button>
+          <button onclick="showTab('collaboration')" class="block text-gray-400 text-sm hover:text-white transition">Collaboration</button>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3 text-sm">Connect</h4>
+        <div class="space-y-2">
+          <a href="https://scholar.google.com/citations?user=Cb3FEiAAAAAJ&hl=en" target="_blank" class="block text-gray-400 text-sm hover:text-white transition">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/rizwan-mushtaq/" target="_blank" class="block text-gray-400 text-sm hover:text-white transition">LinkedIn</a>
+          <a href="https://www.edcparis.edu/fr/corps-professoral/mushtaq-rizwan" target="_blank" class="block text-gray-400 text-sm hover:text-white transition">EDC Faculty Page</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="text-gray-500 text-xs">© 2026 Prof. Rizwan Mushtaq · EDC Paris Business School · All rights reserved.</p>
+      <p class="text-gray-600 text-xs">Research · Teaching · Collaboration · PRO Courses</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Publications data
+  const publications = [
+    { title: "Microfinance, financial inclusion and ICT: Implications for poverty and inequality", authors: "R Mushtaq, C Bruneau", journal: "Technology in Society", year: 2019, citations: 623, category: "finance", doi: "" },
+    { title: "Impact of Islamic work ethics on organizational citizenship behaviors and knowledge-sharing behaviors", authors: "G Murtaza, M Abbas, U Raja, O Roques, A Khalid, R Mushtaq", journal: "Journal of Business Ethics", year: 2016, citations: 439, category: "csr", doi: "" },
+    { title: "ICT adoption, innovation, and SMEs' access to finance", authors: "R Mushtaq, AA Gull, M Usman", journal: "Telecommunications Policy", year: 2022, citations: 147, category: "finance", doi: "" },
+    { title: "The power of the CEO and environmental decoupling", authors: "AA Gull, N Hussain, SA Khan, R Mushtaq, R Orij", journal: "Business Strategy and the Environment", year: 2023, citations: 120, category: "governance", doi: "" },
+    { title: "Revisiting the association between environmental performance and financial performance: Does the level of environmental orientation matter?", authors: "AA Gull, A Saeed, MT Suleman, R Mushtaq", journal: "Corporate Social Responsibility and Environmental Management", year: 2022, citations: 112, category: "csr", doi: "" },
+    { title: "CEO power and corporate social responsibility decoupling", authors: "Y Shahab, AA Gull, T Ahsan, R Mushtaq", journal: "Applied Economics Letters", year: 2022, citations: 101, category: "governance", doi: "" },
+    { title: "Financial literacy, confidence and well-being: The mediating role of financial behavior", authors: "M Sajid, R Mushtaq, G Murtaza, D Yahiaoui, V Pereira", journal: "Journal of Business Research", year: 2024, citations: 95, category: "finance", doi: "" },
+    { title: "Do financial performance indicators predict 10-K text sentiments? An application of artificial intelligence", authors: "R Mushtaq, AA Gull, Y Shahab, I Derouiche", journal: "Research in International Business and Finance", year: 2022, citations: 33, category: "ai", doi: "" },
+    { title: "Sustainability committee and environmental decoupling: International evidence", authors: "AA Gull, AAA Sarang, R Mushtaq, T Ahsan", journal: "Corporate Social Responsibility and Environmental Management", year: 2024, citations: 32, category: "csr", doi: "" },
+    { title: "Striving to safeguard shareholders or maintain sustainability in periods of high uncertainty: A multi-country evidence", authors: "AA Gull, T Ahsan, MA Qureshi, R Mushtaq", journal: "Technological Forecasting and Social Change", year: 2023, citations: 19, category: "governance", doi: "" },
+    { title: "COVID-19 adaptive strategy and SMEs' access to finance", authors: "AA Gull, R Mushtaq, DK Nguyen, PT Tran", journal: "Applied Economics", year: 2024, citations: 16, category: "finance", doi: "" },
+    { title: "Impact of globalisation, remittances and human capital on environmental quality: Evidence from landlocked African countries", authors: "CEW Yameogo, R Mushtaq, MW Zafar, SAH Zaidi, MAS Al-Faryan", journal: "International Journal of Finance & Economics", year: 2024, citations: 12, category: "csr", doi: "" },
+    { title: "The walking dead: are Zombie firms environmentally and socially responsible? A global perspective", authors: "AI Mashwani, R Mushtaq, AA Gull, AA Rind", journal: "Journal of Environmental Management", year: 2024, citations: 11, category: "csr", doi: "" },
+    { title: "The impact of liquidity conditions on the time-varying link between US municipal green bonds and major risky markets during the COVID-19 crisis: A machine learning approach", authors: "B Kocaarslan, R Mushtaq", journal: "Energy Policy", year: 2024, citations: 11, category: "ai", doi: "" },
+    { title: "International portfolio diversification: United States and south Asian equity markets", authors: "R Mushtaq, SZA Shah", journal: "Panoeconomicus", year: 2014, citations: 9, category: "ai", doi: "" },
+    { title: "Are born global firms environmentally more responsible? Evidence from the East Asia and Pacific region", authors: "R Mushtaq, G Murtaza, D Yahiaoui, P Vijay, QA Talpur", journal: "Asia Pacific Journal of Management", year: 2025, citations: 6, category: "csr", doi: "" },
+    { title: "Stock price crash and information environment: Do CEO gender and financial expertise matter?", authors: "AA Gull, A Abid, DK Nguyen, M Usman, R Mushtaq", journal: "Review of Quantitative Finance and Accounting", year: 2025, citations: 4, category: "governance", doi: "" },
+    { title: "Does financial inclusion affect economic growth? A global perspective", authors: "M Khizar, ZUR Rao, MZ Tauni, R Mushtaq", journal: "International Journal of Business Competition and Growth", year: 2022, citations: 1, category: "finance", doi: "" },
+    { title: "Gender-diverse boards and related party transactions: What makes the difference?", authors: "AA Gull, I Derouiche, R Mushtaq", journal: "Revue Française de Gouvernance d'Entreprise", year: 2023, citations: 0, category: "governance", doi: "" },
+  ];
+
+  let currentFilter = 'all';
+
+  function renderPublications(filter) {
+    const list = document.getElementById('pub-list');
+    const filtered = filter === 'all' ? publications : publications.filter(p => p.category === filter);
+    const categoryColors = { governance: 'bg-blue-100 text-blue-700', csr: 'bg-green-100 text-green-700', finance: 'bg-amber-100 text-amber-700', ai: 'bg-purple-100 text-purple-700' };
+    const categoryLabels = { governance: 'Corporate Governance', csr: 'CSR & Sustainability', finance: 'Financial Inclusion', ai: 'AI & Markets' };
+    list.innerHTML = filtered.map((p, i) => `
+      <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm pub-card">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 rounded-full font-medium ${categoryColors[p.category]}">${categoryLabels[p.category]}</span>
+              <span class="text-gray-400 text-xs">${p.year}</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-1">${p.title}</h3>
+            <p class="text-gray-500 text-xs mb-1">${p.authors}</p>
+            <p class="text-gray-400 text-xs italic">${p.journal}</p>
+          </div>
+          <div class="flex-shrink-0 text-right">
+            <div class="citation-count text-white text-xs px-3 py-1 rounded-full font-bold inline-block">${p.citations > 0 ? p.citations + ' citations' : 'New'}</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterPubs(filter) {
+    currentFilter = filter;
+    document.querySelectorAll('.pub-filter').forEach(btn => {
+      btn.classList.remove('bg-navy-900', 'text-white', 'active-filter');
+      btn.classList.add('bg-gray-100', 'text-gray-700');
+    });
+    document.getElementById('filter-' + filter).classList.add('bg-navy-900', 'text-white', 'active-filter');
+    document.getElementById('filter-' + filter).classList.remove('bg-gray-100', 'text-gray-700');
+    renderPublications(filter);
+  }
+
+  // Tab switching
+  function showTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('content-' + tab).classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 5000);
+  }
+
+  // Init
+  renderPublications('all');
+</script>
+</body>
+</html>
